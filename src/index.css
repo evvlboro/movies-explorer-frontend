@@ -1,0 +1,25 @@
+@import url(./vendor/normalize.css);
+
+@import url(./fonts/inter.css);
+
+@import url(./block/promo/promo.css);
+@import url(./block/promo/__header/promo__header.css);
+@import url(./block/promo/__header/_entry-buttons/promo__header_entry-buttons.css);
+@import url(./block/promo/__header/_logo/promo__header_logo.css);
+@import url(./block/promo/__header/_sign-in/promo__header_sign-in.css);
+@import url(./block/promo/__header/_sign-up/promo__header_sign-up.css);
+@import url(./block/promo/__title/promo__title.css);
+@import url(./block/promo/__title/_text/promo__title_text.css);
+@import url(./block/promo/__figure/promo__figure.css);
+
+@import url(./block/about/about.css);
+@import url(./block/about/__title/about__title.css);
+@import url(./block/about/__text/about__text.css);
+@import url(./block/about/__main-text/about__main-text.css);
+@import url(./block/about/__main-text/_container/about__main-text_container.css);
+@import url(./block/about/__main-text/_big/about__main-text_big.css);
+@import url(./block/about/__main-text/_small/about__main-text_small.css);
+@import url(./block/about/__progress-table/about__progress-table.css);
+@import url(./block/about/__progress-table/_green-cell/about__progress-table_green-cell.css);
+@import url(./block/about/__progress-table/_gray-cell/about__progress-table_gray-cell.css);
+@import url(./block/about/__progress-table/_transparent-cell/about__progress-table_transparent-cell.css);
