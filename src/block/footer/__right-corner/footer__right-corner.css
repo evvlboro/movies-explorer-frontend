@@ -1,0 +1,4 @@
+.footer__right-corner {
+  display: flex;
+  flex-direction: row;
+}

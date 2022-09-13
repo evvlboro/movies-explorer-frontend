@@ -1,0 +1,10 @@
+.footer__container {
+  font-size: 13px;
+  line-height: 16px;
+
+  padding-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
