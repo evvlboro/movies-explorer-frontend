@@ -1,43 +1,43 @@
 function AboutProject() {
     return (
-        <div className="about">
-          <div className="about__title">
-            <p className="about__text">О проекте</p>
+        <div className="block">
+          <div className="block__title">
+            <p className="block__text">О проекте</p>
           </div>
-          <div className="about__main-text">
-            <div className="about__main-text_container">
-              <div className="about__main-text_big">
-                <p className="about__text">
+          <div className="block__main-text">
+            <div className="block__main-text-container">
+              <div className="block__main-text_size_x">
+                <p className="block__text">
                   Дипломный проект включал 5 этапов
                 </p>
               </div>
-              <div className="about__main-text_small">
-                <p className="about__text">
+              <div className="block__main-text_size_s">
+                <p className="block__text">
                   Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.
                 </p>
               </div>
             </div>
-            <div className="about__main-text_container">
-              <div className="about__main-text_big">
-                <p className="about__text">
+            <div className="block__main-text-container">
+              <div className="block__main-text_size_x">
+                <p className="block__text">
                   На выполнение диплома ушло 5 недель
                 </p>
               </div>
-              <div className="about__main-text_small">
-                <p className="about__text">
+              <div className="block__main-text_size_s">
+                <p className="block__text">
                   У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.
                 </p>
               </div>
             </div>
           </div>
-          <table className="about__progress-table">
+          <table className="progress-table">
             <tr>
-              <td className="about__progress-table_green-cell">1 неделя</td>
-              <td className="about__progress-table_gray-cell">4 недели</td>
+              <td className="progress-table__green-cell">1 неделя</td>
+              <td className="progress-table__gray-cell">4 недели</td>
             </tr>
             <tr>
-              <td className="about__progress-table_transparent-cell">Back-end</td>
-              <td className="about__progress-table_transparent-cell">Front-end</td>
+              <td className="progress-table__transparent-cell">Back-end</td>
+              <td className="progress-table__transparent-cell">Front-end</td>
             </tr>
           </table>
         </div>

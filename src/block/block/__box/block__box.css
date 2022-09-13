@@ -1,0 +1,16 @@
+.block__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  width: 90px;
+  height: 60px;
+
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+
+  background: #E8E8E8;
+  border-radius: 10px;
+}
