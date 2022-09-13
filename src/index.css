@@ -16,10 +16,10 @@
 @import url(./block/block/__title/block__title.css);
 @import url(./block/block/__text/block__text.css);
 @import url(./block/block/__main-text/block__main-text.css);
-@import url(./block/block/__main-text/_size_x/block__main-text_size_x.css);
+@import url(./block/block/__main-text/_size_l/block__main-text_size_l.css);
 @import url(./block/block/__main-text/_size_s/block__main-text_size_s.css);
 @import url(./block/block/__main-text/_size_xl/block__main-text_size_xl.css);
-@import url(./block/block/__main-text/margin_x/block__main-text_margin_x.css);
+@import url(./block/block/__main-text/_margin_90/block__main-text_margin_90.css);
 @import url(./block/block/__main-text/_align_center/block__main-text_align_center.css);
 
 @import url(./block/block/__main-text-container/block__main-text-container.css);
@@ -33,3 +33,21 @@
 @import url(./block/block/__box/block__box.css);
 
 @import url(./block/block/_bgc_grey/block_bgc_grey.css);
+
+@import url(./block/block/__about-student-container/block__about-student-container.css);
+
+@import url(./block/block/__about-student/block__about-student.css);
+
+@import url(./block/block/__main-text/_size_es/block__main-text_size_es.css);
+@import url(./block/block/__main-text/_margin_77/block__main-text_margin_77.css);
+@import url(./block/block/__main-text/_size_xs/block__main-text_size_xs.css);
+@import url(./block/block/__main-text/_size_xxs/block__main-text_size_xxs.css);
+@import url(./block/block/__main-text/_ta_center/block__main-text_ta_center.css);
+@import url(./block/block/__main-text/_margin_18/block__main-text_margin_18.css);
+
+@import url(./block/block/__portfolio-container/block__porfolio-container.css);
+@import url(./block/block/__portfolio/block__portfolio.css);
+
+@import url(./block/block/__link-container/block__link-container.css);
+@import url(./block/block/__link-text/block__link-text.css);
+

@@ -1,0 +1,6 @@
+.block__about-student {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

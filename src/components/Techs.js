@@ -4,7 +4,7 @@ function Techs() {
       <div className="block__title">
         <p className="block__text">Технологии</p>
       </div>
-      <div className="block__main-text_size_xl  block__main-text_margin_x">
+      <div className="block__main-text_size_xl block__main-text_ta_center  block__main-text_margin_90">
         <p className="block__text">7 технологий</p>
       </div>
       <div className="block__main-text_size_s block__main-text_align_center">
