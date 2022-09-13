@@ -1,16 +1,10 @@
-import logo from '../images/logo.svg';
 import figure from '../images/figure.png'
+import Header from './Header';
 
 function Promo() {
     return (
         <div className="promo">
-            <div className="promo__header">
-                <img src={logo} alt="logo" className="promo__header_logo" />
-                <div className="promo__header_entry-buttons">
-                  <button className="promo__header_sign-up">Регистрация</button>
-                  <button className="promo__header_sign-in">Войти</button>
-                </div>
-            </div>
+            <Header />
             <div className="promo__title">
               <p className="promo__title_text">Учебный проект студента факультета Веб-разработки.</p>
             </div>

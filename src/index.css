@@ -2,12 +2,13 @@
 
 @import url(./fonts/inter.css);
 
+@import url(./block/header/header.css);
+@import url(./block/header/__entry-buttons/header__entry-buttons.css);
+@import url(./block/header/__logo/header__logo.css);
+@import url(./block/header/__sign-in/header__sign-in.css);
+@import url(./block/header/__sign-up/header__sign-up.css);
+
 @import url(./block/promo/promo.css);
-@import url(./block/promo/__header/promo__header.css);
-@import url(./block/promo/__header/_entry-buttons/promo__header_entry-buttons.css);
-@import url(./block/promo/__header/_logo/promo__header_logo.css);
-@import url(./block/promo/__header/_sign-in/promo__header_sign-in.css);
-@import url(./block/promo/__header/_sign-up/promo__header_sign-up.css);
 @import url(./block/promo/__title/promo__title.css);
 @import url(./block/promo/__title/_text/promo__title_text.css);
 @import url(./block/promo/__figure/promo__figure.css);
