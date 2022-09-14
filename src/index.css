@@ -51,6 +51,7 @@
 
 @import url(./block/block/__link-container/block__link-container.css);
 @import url(./block/block/__link-text/block__link-text.css);
+@import url(./block/block/__link-icon/block__link-icon.css);
 
 @import url(./block/footer/footer.css);
 @import url(./block/footer/__title/footer__title.css);
@@ -68,3 +69,8 @@
 @import url(./block/header/__saved-films-btn/header__saved-films-btn.css);
 @import url(./block/header/__acc-btn/header__acc-btn.css);
 @import url(./block/header/__container/header__container.css);
+
+@import url(./block/search-form/search-form.css);
+@import url(./block/search-form/__container/search-form__container.css);
+@import url(./block/search-form/__input/search-form__input.css);
+@import url(./block/search-form/__btn/search-form__btn.css);

@@ -3,4 +3,9 @@
   margin-right: 16px;
   background: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.header__films-btn:hover {
+  opacity: .6;
 }

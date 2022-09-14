@@ -1,0 +1,11 @@
+.search-form__btn {
+  width: 34px;
+  height: 34px;
+  background: url(../../../images/find.png) no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.search-form__btn:hover {
+  opacity: .6;
+}

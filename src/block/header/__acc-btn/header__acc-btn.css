@@ -3,4 +3,9 @@
   width: 100px;
   height: 30px;
   border: none;
+  cursor: pointer;
+}
+
+.header__acc-btn:hover {
+  opacity: .6;
 }

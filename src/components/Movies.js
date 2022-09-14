@@ -1,11 +1,11 @@
-// import FilterCheckbox from './FilterCheckbox';
 import Header from './Header';
+import SearchForm from './SearchForm';
 
 function Movies() {
   return (
     <>
       <Header loggedIn={true}/>
-      {/* <FilterCheckbox /> */}
+      <SearchForm />
     </>
   )
 }

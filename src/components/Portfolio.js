@@ -12,7 +12,7 @@ function Portfolio() {
           Статичный сайт
         </a>
         <a href="#" >
-          <img src={linkIcon} alt="linkIcon" />
+          <img src={linkIcon} class="block__link-icon" alt="linkIcon" />
         </a>
       </div>
       <div className="block__link-container">
@@ -20,7 +20,7 @@ function Portfolio() {
           Адаптивный сайт
         </a>
         <a href="#" >
-          <img src={linkIcon} alt="linkIcon" />
+          <img src={linkIcon} class="block__link-icon" alt="linkIcon" />
         </a>
       </div>
       <div className="block__link-container">
@@ -28,7 +28,7 @@ function Portfolio() {
           Одностраничное приложение
         </a>
         <a href="#" >
-          <img src={linkIcon} alt="linkIcon" />
+          <img src={linkIcon} class="block__link-icon" alt="linkIcon" />
         </a>
       </div>
     </div>

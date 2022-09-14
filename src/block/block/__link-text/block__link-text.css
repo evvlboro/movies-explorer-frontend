@@ -4,4 +4,9 @@
 
   text-decoration: none;
   color: #000000;
+  cursor: pointer;
+}
+
+.block__link-text:hover {
+  opacity: .6;
 }

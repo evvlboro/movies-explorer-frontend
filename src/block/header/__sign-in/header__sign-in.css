@@ -5,4 +5,9 @@
   min-width: 76px;
   min-height: 32px;
   border: none;
+  cursor: pointer;
+}
+
+.header__sign-in:hover {
+  opacity: .6;
 }

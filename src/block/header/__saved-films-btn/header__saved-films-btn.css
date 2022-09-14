@@ -2,4 +2,9 @@
   font-weight: 400;
   background: transparent;
   border: none;
+  cursor: pointer;
+}
+
+.header__saved-films-btn:hover {
+  opacity: .6;
 }

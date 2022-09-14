@@ -3,4 +3,9 @@
   background: transparent;
   border: none;
   color: #FFFFFF;
+  cursor: pointer;
+}
+
+.header__sign-up:hover {
+  opacity: .6;
 }
