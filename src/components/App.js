@@ -1,8 +1,17 @@
 import Main from './Main';
+import Movies from './Movies';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <Main />
+    <Switch>
+      <Route exact path="/">
+        <Main />
+      </Route>
+      <Route exact path="/movies">
+        <Movies />
+      </Route>
+    </Switch>
   );
 }
 

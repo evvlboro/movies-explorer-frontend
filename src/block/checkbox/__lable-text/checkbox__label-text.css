@@ -1,0 +1,9 @@
+.checkbox__label-text {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+
+  margin:  0 0 0 14px;
+}

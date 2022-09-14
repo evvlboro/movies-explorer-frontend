@@ -57,3 +57,14 @@
 @import url(./block/footer/__container/footer__container.css);
 @import url(./block/footer/__right-corner/footer__right-corner.css);
 @import url(./block/footer/__practicum-text/footer__practicum-text.css);
+
+@import url(./block/checkbox/checkbox.css);
+@import url(./block/checkbox/__label/checkbox__label.css);
+@import url(./block/checkbox/__container/checkbox__container.css);
+@import url(./block/checkbox/__lable-text/checkbox__label-text.css);
+
+@import url(./block/header/__film-container/header__film-container.css);
+@import url(./block/header/__films-btn/header__films-btn.css);
+@import url(./block/header/__saved-films-btn/header__saved-films-btn.css);
+@import url(./block/header/__acc-btn/header__acc-btn.css);
+@import url(./block/header/__container/header__container.css);
