@@ -1,0 +1,6 @@
+.auth__container {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 70px 0;
+}
