@@ -1,0 +1,11 @@
+.movies-card__delete-btn {
+  background: url(../../../images/delete-btn.png);
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.movies-card__delete-btn:hover {
+  opacity: .6;
+}

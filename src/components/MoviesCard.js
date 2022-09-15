@@ -1,4 +1,5 @@
-function MoviesCard({title, duration, imgUrl}) {
+function MoviesCard({title, duration, imgUrl, fromSavedPage}) {
+  console.log('fromSavedPage: ' + fromSavedPage);
   return (
     <div className="movies-card">
       <div className="movies-card__container">
@@ -6,7 +7,11 @@ function MoviesCard({title, duration, imgUrl}) {
           <p className="movies-card__title">{title}</p>
           <p className="movies-card__duration">{duration}</p>
         </div>
-        <button className="movies-card__save-btn" />
+        {
+          fromSavedPage ?
+          ( <button className="movies-card__delete-btn" /> ) :
+          ( <button className="movies-card__save-btn" /> )
+        }
       </div>
       <img src={imgUrl} alt={title} className="movies-card__img" />
     </div>
