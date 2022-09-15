@@ -1,4 +1,6 @@
 .header__saved-films-btn {
+  text-decoration: none;
+  color: #000000;
   font-weight: 400;
   background: transparent;
   border: none;

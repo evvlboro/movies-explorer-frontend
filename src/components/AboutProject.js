@@ -31,14 +31,16 @@ function AboutProject() {
             </div>
           </div>
           <table className="progress-table">
-            <tr>
-              <td className="progress-table__green-cell">1 неделя</td>
-              <td className="progress-table__gray-cell">4 недели</td>
-            </tr>
-            <tr>
-              <td className="progress-table__transparent-cell">Back-end</td>
-              <td className="progress-table__transparent-cell">Front-end</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td className="progress-table__green-cell">1 неделя</td>
+                <td className="progress-table__gray-cell">4 недели</td>
+              </tr>
+              <tr>
+                <td className="progress-table__transparent-cell">Back-end</td>
+                <td className="progress-table__transparent-cell">Front-end</td>
+              </tr>
+            </tbody>
           </table>
         </div>
     );

@@ -1,4 +1,6 @@
 .header__films-btn {
+  text-decoration: none;
+  color: #000000;
   font-weight: 500;
   margin-right: 16px;
   background: transparent;

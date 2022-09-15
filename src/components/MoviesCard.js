@@ -1,5 +1,4 @@
 function MoviesCard({title, duration, imgUrl, fromSavedPage}) {
-  console.log('fromSavedPage: ' + fromSavedPage);
   return (
     <div className="movies-card">
       <div className="movies-card__container">
