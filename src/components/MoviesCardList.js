@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MoviesCard from "./MoviesCard";
 
 function MoviesCardList({cards, fromSavedPage}){
-  let initalCount = 3;
+  let initalCount = Math.trunc((window.screen.width - 140) / 364);
   if(fromSavedPage === true) {
     initalCount = cards.length;
   }
@@ -29,7 +29,7 @@ function MoviesCardList({cards, fromSavedPage}){
             <button
               className="movies-card-list__more-btn"
               onClick={() => {
-                setCount(count + 3);
+                setCount(count + initalCount);
               }}>
               Ещё
             </button>

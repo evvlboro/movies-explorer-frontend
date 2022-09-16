@@ -108,3 +108,13 @@
 @import url(./block/auth/__text/auth__text.css);
 @import url(./block/auth/__link/auth__link.css);
 @import url(./block/auth/__submit-btn/_margin_220/auth__submit-btn_margin_220.css);
+
+@import url(./block/profile/profile.css);
+@import url(./block/profile/__conatainer/profile__conatainer.css);
+@import url(./block/profile/__hello/profile__hello.css);
+@import url(./block/profile/__input-container/profile__input-container.css);
+@import url(./block/profile/__input/profile__input.css);
+@import url(./block/profile/__input-container/_border_on/profile__input-container_border_on.css);
+@import url(./block/profile/__input-container/_margin_17/profile__input-container_margin_17.css);
+@import url(./block/profile/__update/profile__update.css);
+@import url(./block/profile/__logout/profile__logout.css);

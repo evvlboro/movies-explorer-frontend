@@ -13,7 +13,7 @@ function Header({ loggedIn }) {
               <Link to="/movies" className='header__films-btn'>Фильмы</Link>
               <Link to="/saved-movies" className='header__saved-films-btn'>Сохраненные фыльмы</Link>
           </div>
-          <button className="header__acc-btn" />
+          <Link to="/profile" ><button className="header__acc-btn" /></Link>
         </div>
       </div>
     ) :

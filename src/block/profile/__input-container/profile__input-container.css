@@ -1,0 +1,15 @@
+.profile__input-container {
+  width: 410px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+
+  color: #000000;
+}

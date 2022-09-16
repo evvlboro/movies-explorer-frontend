@@ -1,0 +1,11 @@
+.profile__hello {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #000000;
+
+  margin: 74px 60px 123px 0;
+}

@@ -10,11 +10,11 @@ function Login() {
         <form className="auth__form">
           <div className="auth__input-container">
             <input type="email" className="auth__input" id="input-email"/>
-            <label for="input-email" className='auth__label'>E-mail</label>
+            <label htmlFor="input-email" className='auth__label'>E-mail</label>
           </div>
           <div className="auth__input-container auth__input-container_margin_24">
             <input type="password" className="auth__input auth__input_error" id="input-password"/>
-            <label for="input-password" className='auth__label'>Пароль</label>
+            <label htmlFor="input-password" className='auth__label'>Пароль</label>
           </div>
 
           <button type="submit" className="auth__submit-btn auth__submit-btn_margin_220">Войти</button>
