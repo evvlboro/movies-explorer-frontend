@@ -118,3 +118,8 @@
 @import url(./block/profile/__input-container/_margin_17/profile__input-container_margin_17.css);
 @import url(./block/profile/__update/profile__update.css);
 @import url(./block/profile/__logout/profile__logout.css);
+
+@import url(./block/not-found/not-found.css);
+@import url(./block/not-found/__error-code/not-found__error-code.css);
+@import url(./block/not-found/__error-text/not-found__error-text.css);
+@import url(./block/not-found/__back/not-found__back.css);

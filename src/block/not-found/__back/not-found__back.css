@@ -1,0 +1,13 @@
+.not-found__back {
+  margin: 184px 0 0 0;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: #FF6838;
+}

@@ -4,6 +4,7 @@ import SavedMovies from './SavedMovies';
 import Register from './Register';
 import Login from './Login';
 import Profile from './Profile';
+import NotFound from './NotFound';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <Route path="/signup" element={<Register />} />
       <Route path="/signin" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="*" element={<h1>404</h1>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
