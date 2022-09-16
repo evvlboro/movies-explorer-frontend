@@ -9,12 +9,13 @@ import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <Routes>
-      <Route exact path="/" element={<Main />} />
-      <Route exact path="/movies" element={<Movies />} />
-      <Route exact path="/saved-movies" element={<SavedMovies />} />
-      <Route exact path="/signup" element={<Register />} />
-      <Route exact path="/signin" element={<Login />} />
-      <Route exact path="/profile" element={<Profile />} />
+      <Route path="/" element={<Main />} />
+      <Route path="/movies" element={<Movies />} />
+      <Route path="/saved-movies" element={<SavedMovies />} />
+      <Route path="/signup" element={<Register />} />
+      <Route path="/signin" element={<Login />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="*" element={<h1>404</h1>} />
     </Routes>
   );
 }
