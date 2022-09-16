@@ -2,6 +2,7 @@ import Main from './Main';
 import Movies from './Movies';
 import SavedMovies from './SavedMovies';
 import Register from './Register';
+import Login from './Login';
 import { Route, Switch } from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
       </Route>
       <Route exact path="/signup">
         <Register />
+      </Route>
+      <Route exact path="/signin">
+        <Login />
       </Route>
     </Switch>
   );
