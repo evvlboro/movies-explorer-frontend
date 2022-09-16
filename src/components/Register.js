@@ -5,7 +5,7 @@ function Register() {
   return (
     <div className="auth">
       <div className="auth__container">
-        <img src={logo} alt="logo" className="auth__logo" />
+        <Link to="/"><img src={logo} alt="logo" className="auth__logo" /></Link>
         <h2 className="auth__hello">Добро пожаловать!</h2>
         <form className="auth__form">
           <div className="auth__input-container">

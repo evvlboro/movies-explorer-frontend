@@ -21,8 +21,8 @@ function Header({ loggedIn }) {
       <div className="header">
         <img src={logo} alt="logo" className="header__logo" />
         <div className="header__entry-buttons">
-          <button className="header__sign-up">Регистрация</button>
-          <button className="header__sign-in">Войти</button>
+            <Link to="/signup"><button className="header__sign-up">Регистрация</button></Link>
+            <Link to="/signin"><button className="header__sign-in">Войти</button></Link>
         </div>
       </div>
     )
