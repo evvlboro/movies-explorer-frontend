@@ -7,11 +7,12 @@ function Footer() {
         </p>
       </div>
       <div className="footer__container">
-        <p className="block__text">© 2020</p>
+        <p className="block__text footer__year">© 2022</p>
         <div className="footer__right-corner">
           <p className="block__text footer__practicum-text">Яндекс.Практикум</p>
           <p className="block__text">Github</p>
         </div>
+        <p className="block__text footer__year_mobile">© 2022</p>
       </div>
     </div>
   )

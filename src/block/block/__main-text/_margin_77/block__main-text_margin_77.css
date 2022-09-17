@@ -1,3 +1,9 @@
 .block__main-text_margin_77 {
   margin-top: 77px;
 }
+
+@media(max-width: 768px) {
+  .block__main-text_margin_77 {
+    margin-top: 69px;
+  }
+}

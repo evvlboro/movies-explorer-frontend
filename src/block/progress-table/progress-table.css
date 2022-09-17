@@ -6,3 +6,10 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@media (max-width: 320px) {
+  .progress-table {
+    margin-top: 60px;
+    margin-bottom: 70px;
+  }
+}

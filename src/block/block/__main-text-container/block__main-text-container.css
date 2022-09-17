@@ -2,3 +2,19 @@
   display: block;
   max-width: 550px;
 }
+
+.block__main-text-container:first-child {
+  margin-right: 30px;
+}
+
+@media(max-width: 768px) {
+  .block__main-text-container {
+    max-width: 319px;
+  }
+}
+
+@media (max-width: 320px) {
+  .block__main-text-container:last-child {
+    margin-top: 60px;
+  }
+}

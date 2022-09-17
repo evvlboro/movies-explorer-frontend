@@ -7,8 +7,9 @@ function AboutMe() {
         <p className="block__text">Студент</p>
       </div>
       <div className="block__about-student-container">
+        <img src={student} alt="studentImage" className="block__student-image_mobile" />
         <div className="block__about-student">
-          <div className="block__main-text_size_xl">
+          <div className="block__main-text_size_xl block__name">
             <p className="block__text">Евгений</p>
           </div>
           <div className="block__main-text_size_xxs block__main-text_margin_18">

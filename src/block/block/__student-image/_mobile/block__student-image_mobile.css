@@ -1,0 +1,11 @@
+.block__student-image_mobile {
+  display: none;
+  width: 292px;
+  height: 352px;
+}
+
+@media (max-width: 680px) {
+  .block__student-image_mobile {
+    display: block;
+  }
+}

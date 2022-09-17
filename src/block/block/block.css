@@ -7,3 +7,16 @@
   font-style: normal;
   font-weight: 400;
 }
+
+@media (max-width: 768px) {
+  .block {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+@media (max-width: 680px) {
+  .block{
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

@@ -3,5 +3,11 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
 
+@media (max-width: 320px) {
+  .block__main-text {
+    flex-direction: column;
+    margin-top: 60px;
+  }
 }

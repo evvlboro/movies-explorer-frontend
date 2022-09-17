@@ -8,9 +8,7 @@ import Footer from './Footer';
 function Main() {
     return (
       <>
-        <Promo
-          loggedIn={false}
-        />
+        <Promo loggedIn={false} />
         <AboutProject />
         <Techs />
         <AboutMe />

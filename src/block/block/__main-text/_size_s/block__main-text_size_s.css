@@ -4,3 +4,16 @@
   font-size: 14px;
   line-height: 20px;
 }
+
+@media (max-width: 440px) {
+  .block__main-text_size_s {
+    font-size: 11px;
+    line-height: 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .block__main-text_size_s {
+    margin-top: 16px;
+  }
+}

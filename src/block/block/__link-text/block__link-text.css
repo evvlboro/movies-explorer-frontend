@@ -10,3 +10,10 @@
 .block__link-text:hover {
   opacity: .6;
 }
+
+@media (max-width: 680px) {
+  .block__link-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

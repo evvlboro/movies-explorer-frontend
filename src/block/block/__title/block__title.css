@@ -8,3 +8,9 @@
 
   letter-spacing: -0.04em;
 }
+
+@media (max-width: 680px) {
+  .block__title {
+    padding-top: 70px;
+  }
+}

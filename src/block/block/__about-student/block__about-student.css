@@ -4,3 +4,15 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .block__about-student {
+    max-width: 364px;
+  }
+}
+
+@media (max-width: 680px) {
+  .block__about-student {
+    max-width: 292px;
+  }
+}

@@ -123,3 +123,9 @@
 @import url(./block/not-found/__error-code/not-found__error-code.css);
 @import url(./block/not-found/__error-text/not-found__error-text.css);
 @import url(./block/not-found/__back/not-found__back.css);
+
+@import url(./block/block/__student-image/_mobile/block__student-image_mobile.css);
+@import url(./block/block/__student-image/block__student-image.css);
+@import url(./block/block/__name/block__name.css);
+@import url(./block/footer/__year/footer__year.css);
+@import url(./block/footer/__year/_mobile/footer__year_mobile.css);

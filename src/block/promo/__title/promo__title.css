@@ -14,3 +14,21 @@
   color: #FFFFFF;
 }
 
+@media(max-width: 768px) {
+  .promo__title {
+    margin-top: 300px;
+  }
+}
+
+@media (max-width: 680px) {
+  .promo__title {
+    margin-top: 183px;
+  }
+}
+
+@media (max-width: 440px) {
+  .promo__title {
+    font-size: 31px;
+    line-height: 39px;
+  }
+}

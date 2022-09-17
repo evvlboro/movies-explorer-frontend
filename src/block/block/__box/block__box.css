@@ -1,9 +1,10 @@
 .block__box {
+  min-width: 84px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 5px;
 
   width: 90px;
   height: 60px;

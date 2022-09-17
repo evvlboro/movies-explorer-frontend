@@ -1,4 +1,18 @@
 .block__porfolio-container {
-  padding-top: 101px;
+  padding-top: 100px;
   padding-bottom: 125px;
+}
+
+@media(max-width: 768px) {
+  .block__porfolio-container {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+}
+
+@media (max-width: 680px) {
+  .block__porfolio-container {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
 }
