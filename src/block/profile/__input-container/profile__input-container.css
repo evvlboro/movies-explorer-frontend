@@ -2,7 +2,7 @@
   width: 410px;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 
   font-family: 'Inter';
@@ -12,4 +12,10 @@
   line-height: 13px;
 
   color: #000000;
+}
+
+@media (max-width: 440px) {
+  .profile__input-container {
+    width: 260px;
+  }
 }

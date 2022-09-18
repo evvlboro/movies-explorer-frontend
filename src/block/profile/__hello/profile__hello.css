@@ -9,3 +9,10 @@
 
   margin: 74px 60px 123px 0;
 }
+
+@media (max-width: 440px) {
+  .profile__hello {
+    margin-right: 0;
+    text-align: center;
+  }
+}

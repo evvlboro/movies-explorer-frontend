@@ -2,3 +2,15 @@
   display: flex;
   flex-direction: row;
 }
+
+@media (max-width: 768px) {
+  .checkbox__container {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 440px) {
+  .checkbox__container {
+    align-self: center;
+  }
+}

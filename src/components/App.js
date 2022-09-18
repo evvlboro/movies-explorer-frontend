@@ -18,6 +18,7 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
+
   );
 }
 

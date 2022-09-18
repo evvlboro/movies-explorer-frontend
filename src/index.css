@@ -129,3 +129,14 @@
 @import url(./block/block/__name/block__name.css);
 @import url(./block/footer/__year/footer__year.css);
 @import url(./block/footer/__year/_mobile/footer__year_mobile.css);
+@import url(./block/header/__menu-btn/header__menu-btn.css);
+
+@import url(./block/popup/popup.css);
+@import url(./block/popup/__close-btn/popup__close-btn.css);
+@import url(./block/popup/__routes/popup__routes.css);
+@import url(./block/popup/__link/popup__link.css);
+@import url(./block/popup/__link/_active/popup__link_active.css);
+@import url(./block/popup/__acc-btn/popup__acc-btn.css);
+@import url(./block/popup/_opened/popup_opened.css);
+
+@import url(./block/footer/__link/footer__link.css);

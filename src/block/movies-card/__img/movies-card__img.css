@@ -2,3 +2,10 @@
   width: 364px;
   height: 203px;
 }
+
+@media (max-width: 768px) {
+  .movies-card__img {
+      width: 300px;
+      height: 168px;
+    }
+}

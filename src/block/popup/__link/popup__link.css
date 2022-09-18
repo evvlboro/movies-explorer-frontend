@@ -1,0 +1,15 @@
+.popup__link {
+  text-decoration: none;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #000000;
+
+  margin-top: 24px;
+}
+
+.popup__link:hover {
+  opacity: .6;
+}

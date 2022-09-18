@@ -4,8 +4,15 @@
   height: 30px;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .header__acc-btn:hover {
   opacity: .6;
+}
+
+@media (max-width: 768px) {
+  .header__acc-btn {
+    display: none;
+  }
 }

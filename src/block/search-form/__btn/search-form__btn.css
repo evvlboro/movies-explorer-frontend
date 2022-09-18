@@ -4,6 +4,7 @@
   background: url(../../../images/find.png) no-repeat;
   border: none;
   cursor: pointer;
+  padding: 0;
 }
 
 .search-form__btn:hover {

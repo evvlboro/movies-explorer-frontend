@@ -4,3 +4,9 @@
   font-size: 13px;
   line-height: 18px;
 }
+
+@media (max-width: 768px){
+  .header__film-container {
+    display: none;
+  }
+}

@@ -9,8 +9,8 @@ function Footer() {
       <div className="footer__container">
         <p className="block__text footer__year">© 2022</p>
         <div className="footer__right-corner">
-          <p className="block__text footer__practicum-text">Яндекс.Практикум</p>
-          <p className="block__text">Github</p>
+          <a href="https://practicum.yandex.ru" target="_blank" rel="noreferrer" className="footer__link block__text footer__practicum-text">Яндекс.Практикум</a>
+          <a href="https://github.com/evvlboro" target="_blank" rel="noreferrer" className="footer__link block__text ">Github</a>
         </div>
         <p className="block__text footer__year_mobile">© 2022</p>
       </div>

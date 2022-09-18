@@ -4,3 +4,9 @@
   flex-direction: column;
   width: 364px;
 }
+
+@media (max-width: 768px) {
+  .movies-card {
+    width: 300px;
+  }
+}

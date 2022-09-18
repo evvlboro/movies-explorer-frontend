@@ -20,7 +20,7 @@ function Login() {
           <button type="submit" className="auth__submit-btn auth__submit-btn_margin_220">Войти</button>
           <p className="auth__text">
             Ещё не зарегистрированы?
-            <Link exact to="/signup" className="auth__link">Регистрация</Link>
+            <Link to="/signup" className="auth__link">Регистрация</Link>
           </p>
         </form>
       </div>

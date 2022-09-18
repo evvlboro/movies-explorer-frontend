@@ -8,26 +8,26 @@ function Portfolio() {
         <p className="block__text">Портфолио</p>
       </div>
       <div className="block__link-container">
-        <a href="#" className="block__link-text">
+        <a href="https://github.com/evvlboro/how-to-learn" className="block__link-text" target="_blank" rel="noreferrer">
           Статичный сайт
         </a>
-        <a href="#" >
+        <a href="https://github.com/evvlboro/how-to-learn" target="_blank" rel="noreferrer">
           <img src={linkIcon} className="block__link-icon" alt="linkIcon" />
         </a>
       </div>
       <div className="block__link-container">
-        <a href="#" className="block__link-text">
+        <a href="https://github.com/evvlboro/russian-travel" className="block__link-text" target="_blank" rel="noreferrer">
           Адаптивный сайт
         </a>
-        <a href="#" >
+        <a href="https://github.com/evvlboro/russian-travel" target="_blank" rel="noreferrer">
           <img src={linkIcon} className="block__link-icon" alt="linkIcon" />
         </a>
       </div>
       <div className="block__link-container">
-        <a href="#" className="block__link-text">
+        <a href="https://github.com/evvlboro/mesto" className="block__link-text"target="_blank" rel="noreferrer">
           Одностраничное приложение
         </a>
-        <a href="#" >
+        <a href="https://github.com/evvlboro/mesto" target="_blank" rel="noreferrer">
           <img src={linkIcon} className="block__link-icon" alt="linkIcon" />
         </a>
       </div>
