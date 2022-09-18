@@ -9,4 +9,6 @@
   align-items: center;
   visibility: hidden;
   background-color: white;
+
+  z-index: 2;
 }
