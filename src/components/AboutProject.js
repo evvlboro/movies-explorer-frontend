@@ -1,6 +1,6 @@
 function AboutProject() {
     return (
-        <div className="block">
+      <section className="block">
           <div className="block__title">
             <p className="block__text">О проекте</p>
           </div>
@@ -42,7 +42,7 @@ function AboutProject() {
               </tr>
             </tbody>
           </table>
-        </div>
+      </section>
     );
 }
 

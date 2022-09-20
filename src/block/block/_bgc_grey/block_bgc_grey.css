@@ -1,3 +1,9 @@
 .block_bgc_grey {
   background: #F5F5F5;
 }
+
+@media (max-width: 320px) {
+  .block_bgc_grey {
+    background: #FFFFFF;
+  }
+}

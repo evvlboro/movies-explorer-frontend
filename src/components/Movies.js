@@ -66,8 +66,10 @@ function Movies() {
   return (
     <>
       <Header loggedIn={true}/>
-      <SearchForm />
-      <MoviesCardList cards={cards} />
+      <main>
+        <SearchForm />
+        <MoviesCardList cards={cards} />
+      </main>
       <Footer />
     </>
   )

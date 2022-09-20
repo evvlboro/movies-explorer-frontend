@@ -2,7 +2,7 @@ import Header from './Header';
 
 function Profile() {
   return (
-    <div className="profile">
+    <section className="profile">
       <Header
         loggedIn={true}
       />
@@ -16,10 +16,10 @@ function Profile() {
           <label htmlFor="input-email" className="profile__label">E-mail</label>
           <input type="email" className="profile__input" id="input-email" name="input-email" defaultValue="evvlboro@yandex.by" />
         </div>
-        <button className="profile__update">Редактировать</button>
-        <button className="profile__logout">Выйти из аккаунта</button>
+        <button className="profile__update" type="button">Редактировать</button>
+        <button className="profile__logout" type="button">Выйти из аккаунта</button>
       </form>
-    </div>
+    </section>
   );
 }
 

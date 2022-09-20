@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="block footer">
+    <footer className="block footer">
       <div className="footer__title">
         <p className="block__text">
           Учебный проект Яндекс.Практикум х BeatFilm.
@@ -14,7 +14,7 @@ function Footer() {
         </div>
         <p className="block__text footer__year_mobile">© 2022</p>
       </div>
-    </div>
+    </footer>
   )
 }
 

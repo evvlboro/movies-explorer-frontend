@@ -69,10 +69,12 @@ function SavedMovies() {
   return (
     <>
       <Header loggedIn={true}/>
-      <SearchForm />
-      <MoviesCardList
-        cards={cards.filter(card => card.isSaved === true)}
-        fromSavedPage={true} />
+      <main>
+        <SearchForm />
+        <MoviesCardList
+          cards={cards.filter(card => card.isSaved === true)}
+          fromSavedPage={true} />
+      </main>
       <Footer />
     </>
   )

@@ -11,7 +11,7 @@ function MoviesCardList({cards, fromSavedPage}){
   const [count, setCount] = useState(initalCount);
 
   return (
-    <div className="movies-card-list">
+    <section className="movies-card-list">
       <div className="movies-card-list__container">
         {
           cards.slice(0, count).map((card, i) => (
@@ -30,6 +30,7 @@ function MoviesCardList({cards, fromSavedPage}){
           (
             <button
               className="movies-card-list__more-btn"
+              type="button"
               onClick={() => {
                 setCount(count + addCount);
               }}>
@@ -38,7 +39,7 @@ function MoviesCardList({cards, fromSavedPage}){
           ) : (<></>)
       }
 
-    </div>
+    </section>
   );
 }
 

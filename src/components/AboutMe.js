@@ -2,7 +2,7 @@ import student from '../images/student.png';
 
 function AboutMe() {
   return (
-    <div className="block">
+    <section className="block">
       <div className="block__title">
         <p className="block__text">Студент</p>
       </div>
@@ -30,7 +30,7 @@ function AboutMe() {
         </div>
         <img src={student} alt="studentImage" className="block__student-image"/>
       </div>
-    </div>
+    </section>
   )
 }
 

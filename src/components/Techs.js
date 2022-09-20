@@ -1,6 +1,6 @@
 function Techs() {
   return (
-    <div className="block block_bgc_grey">
+    <section className="block block_bgc_grey">
       <div className="block__title">
         <p className="block__text">Технологии</p>
       </div>
@@ -49,7 +49,7 @@ function Techs() {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

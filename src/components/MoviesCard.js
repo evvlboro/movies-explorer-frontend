@@ -1,6 +1,6 @@
 function MoviesCard({title, duration, imgUrl, fromSavedPage}) {
   return (
-    <div className="movies-card">
+    <section className="movies-card">
       <div className="movies-card__container">
         <div className="movies-card__text-container">
           <p className="movies-card__title">{title}</p>
@@ -8,12 +8,12 @@ function MoviesCard({title, duration, imgUrl, fromSavedPage}) {
         </div>
         {
           fromSavedPage ?
-          ( <button className="movies-card__delete-btn" /> ) :
-          ( <button className="movies-card__save-btn" /> )
+            (<button className="movies-card__delete-btn" type="button" /> ) :
+            (<button className="movies-card__save-btn" type="button" /> )
         }
       </div>
       <img src={imgUrl} alt={title} className="movies-card__img" />
-    </div>
+    </section>
   )
 }
 
