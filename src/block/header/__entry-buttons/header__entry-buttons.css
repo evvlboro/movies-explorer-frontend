@@ -1,0 +1,10 @@
+.header__entry-buttons {
+  display: flex;
+  justify-content: space-between;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}

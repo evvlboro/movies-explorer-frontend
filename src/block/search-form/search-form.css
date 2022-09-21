@@ -1,0 +1,9 @@
+.search-form {
+  margin-bottom: 32px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid;
+  border-color: #E8E8E8;
+
+  display: flex;
+  justify-content: space-between;
+}

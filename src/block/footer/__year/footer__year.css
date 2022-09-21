@@ -1,0 +1,5 @@
+@media (max-width: 320px) {
+  .footer__year {
+    display: none;
+  }
+}

@@ -1,0 +1,9 @@
+.promo__title_text {
+  margin: 0;
+}
+
+@media(max-width: 768px) {
+  .promo__title_text {
+    text-align: center;
+  }
+}

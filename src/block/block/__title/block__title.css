@@ -1,0 +1,16 @@
+.block__title {
+  border-bottom: 1px solid;
+  padding-top: 110px;
+  padding-bottom: 23px;
+
+  font-size: 22px;
+  line-height: 27px;
+
+  letter-spacing: -0.04em;
+}
+
+@media (max-width: 680px) {
+  .block__title {
+    padding-top: 70px;
+  }
+}

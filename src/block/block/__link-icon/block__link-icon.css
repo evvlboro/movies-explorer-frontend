@@ -1,0 +1,7 @@
+.block__link-icon {
+  cursor: pointer;
+}
+
+.block__link-icon:hover {
+  opacity: .6;
+}

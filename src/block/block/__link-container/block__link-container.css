@@ -1,0 +1,12 @@
+.block__link-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid;
+  border-color: #E8E8E8;
+
+  padding-bottom: 19px;
+  margin-top: 20px;
+}

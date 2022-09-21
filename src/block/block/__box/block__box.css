@@ -1,0 +1,18 @@
+.block__box {
+  min-width: 84px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+
+  width: 90px;
+  height: 60px;
+
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+
+  background: #E8E8E8;
+  border-radius: 10px;
+}

@@ -1,0 +1,19 @@
+.search-form__container {
+  padding: 70px 70px 47px 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .search-form__container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 320px) {
+  .search-form__container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

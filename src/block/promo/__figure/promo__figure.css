@@ -1,0 +1,24 @@
+.promo__figure {
+  opacity: 0.7;
+  height: 244px;
+  align-self: flex-end;
+  margin-top: 102px;
+  margin-bottom: 60px;
+}
+
+@media(max-width: 768px) {
+  .promo__figure {
+    align-self: center;
+    margin-top: 140px;
+    margin-bottom: 70px;
+    width: 680px;
+    height: 230px;
+  }
+}
+
+@media (max-width: 680px) {
+  .promo__figure {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+}

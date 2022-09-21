@@ -1,0 +1,11 @@
+.block__main-text_size_xl {
+  font-size: 50px;
+  line-height: 58px;
+}
+
+@media (max-width: 440px) {
+  .block__main-text_size_xl {
+    font-size: 30px;
+    line-height: 36px;
+  }
+}

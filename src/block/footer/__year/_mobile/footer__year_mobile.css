@@ -1,0 +1,10 @@
+.footer__year_mobile {
+  display: none;
+}
+
+@media (max-width: 320px) {
+  .footer__year_mobile {
+    display: inline;
+    margin-top: 30px;
+  }
+}

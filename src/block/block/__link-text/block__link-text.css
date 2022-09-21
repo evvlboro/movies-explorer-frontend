@@ -1,0 +1,19 @@
+.block__link-text {
+  font-size: 30px;
+  line-height: 50px;
+
+  text-decoration: none;
+  color: #000000;
+  cursor: pointer;
+}
+
+.block__link-text:hover {
+  opacity: .6;
+}
+
+@media (max-width: 680px) {
+  .block__link-text {
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

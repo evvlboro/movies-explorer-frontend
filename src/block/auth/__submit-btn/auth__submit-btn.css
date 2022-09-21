@@ -1,0 +1,32 @@
+.auth__submit-btn {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: #FFFFFF;
+
+  background: #FF6838;
+  border-radius: 3px;
+
+  width: 400px;
+  height: 45px;
+
+  margin-top: 135px;
+
+  border: none;
+  cursor: pointer;
+}
+
+.auth__submit-btn:hover {
+  opacity: .6;
+}
+
+@media (max-width: 520px) {
+  .auth__submit-btn {
+    width: 260px;
+  }
+}

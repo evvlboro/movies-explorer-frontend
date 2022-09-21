@@ -1,0 +1,12 @@
+.not-found__error-code {
+  margin: 246px 0 0 0 ;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 140px;
+  line-height: 169px;
+  text-align: center;
+
+  color: #000000;
+}

@@ -1,0 +1,17 @@
+.footer__container {
+  font-size: 13px;
+  line-height: 16px;
+
+  padding-top: 20px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media (max-width: 320px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+  }
+}

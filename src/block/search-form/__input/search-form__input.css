@@ -1,0 +1,13 @@
+.search-form__input {
+  margin: 0;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 34px;
+  color: #A0A0A0;
+
+  border: none;
+  width: 90%;
+  text-decoration: none;
+}

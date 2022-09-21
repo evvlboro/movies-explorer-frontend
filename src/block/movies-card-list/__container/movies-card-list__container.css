@@ -1,0 +1,13 @@
+.movies-card-list__container {
+  padding: 55px 58px 15px 58px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (max-width: 892px) {
+  .movies-card-list__container {
+    justify-content: center;
+  }
+}

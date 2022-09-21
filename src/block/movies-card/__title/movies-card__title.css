@@ -1,0 +1,9 @@
+.movies-card__title {
+  margin: 0;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}

@@ -1,0 +1,13 @@
+.popup__acc-btn {
+  background: url(../../../images/profile.png) no-repeat;
+  width: 100px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 50px;
+}
+
+.popup__acc-btn:hover {
+  opacity: .6;
+}

@@ -1,0 +1,12 @@
+.movies-card__save-btn {
+  background: url(../../../images/save-btn.png);
+  border: none;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.movies-card__save-btn:hover {
+  opacity: .6;
+  background: url(../../../images/save-btn-active.png);
+}

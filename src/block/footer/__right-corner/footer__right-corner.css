@@ -1,0 +1,11 @@
+.footer__right-corner {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 320px) {
+  .footer__right-corner {
+    flex-direction: column;
+    align-items: center;
+  }
+}

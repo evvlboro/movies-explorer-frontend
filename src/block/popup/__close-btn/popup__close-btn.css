@@ -1,0 +1,15 @@
+.popup__close-btn {
+  padding: 0;
+  margin: 14px 14px 0 0;
+  background: url(../../../images/close-btn.png) no-repeat;
+  width: 32px;
+  height: 32px;
+  border: none;
+  align-self: flex-end;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
+.popup__close-btn:hover {
+  opacity: .6;
+}

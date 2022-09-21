@@ -1,0 +1,19 @@
+.block__student-image {
+  width: 270px;
+  height: 327px;
+  margin-left: 49px;
+}
+
+@media(max-width: 768px) {
+  .block__student-image {
+    width: 255px;
+    height: 307px;
+    margin-left: 49px;
+  }
+}
+
+@media (max-width: 680px) {
+  .block__student-image {
+    display: none;
+  }
+}

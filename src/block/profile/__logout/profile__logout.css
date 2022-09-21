@@ -1,0 +1,19 @@
+.profile__logout {
+  margin-top: 16px;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+
+  color: #EE3465;
+
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+.profile__logout:hover {
+  opacity: .6;
+}
