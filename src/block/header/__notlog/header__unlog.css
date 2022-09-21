@@ -2,3 +2,15 @@
   background: #465DFF;
   padding: 0 70px;
 }
+
+@media (max-width: 768px) {
+  .header__notlog {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header__notlog {
+    padding: 0 10px;
+  }
+}
