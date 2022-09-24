@@ -2,7 +2,7 @@ import React from 'react';
 import FilterCheckbox from './FilterCheckbox';
 import moviesApi from '../utils/MoviesApi';
 
-function SearchForm({request, setRequest, onSubmit}) {
+function SearchForm({request, setRequest, onSubmit, shorts, setShorts}) {
 
   const [error, setError] = React.useState('');
 
@@ -10,9 +10,9 @@ function SearchForm({request, setRequest, onSubmit}) {
     event.preventDefault();
     if(request === '' ) {
       setError('Нужно ввести ключевое слово');
+    } else {
+      onSubmit();
     }
-
-    onSubmit();
   }
 
   const handleRequestChange = (event) => {
@@ -44,7 +44,10 @@ function SearchForm({request, setRequest, onSubmit}) {
         error &&
         <span className='search-form__error'>{error}</span>
       }
-      <FilterCheckbox />
+      <FilterCheckbox
+        shorts={shorts}
+        setShorts={setShorts}
+      />
     </form>
   )
 }
