@@ -1,74 +1,47 @@
+import React from 'react';
+
 import Header from './Header';
 import SearchForm from './SearchForm';
 import Footer from './Footer';
 import MoviesCardList from './MoviesCardList';
+import Preloader from './Preloader';
 
-import cardExample1 from '../images/card-examples/example1.png';
+import moviesApi from '../utils/MoviesApi';
 
-const cards = [
-  {
-    _id: 1,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 2,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 3,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 4,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 5,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 6,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 7,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 8,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 9,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
+function Movies({loggedIn}) {
+  const [cards, setCards] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+
+  const [request, setRequest] = React.useState('');
+
+  const onSubmitForm = () => {
+    setLoading(true);
+
+    moviesApi.getInitalCardsList()
+      .then((initalCards) => {
+        console.log(initalCards);
+        setCards(initalCards);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
-]
 
-function Movies() {
   return (
     <>
-      <Header loggedIn={true}/>
+      <Header loggedIn={loggedIn}/>
       <main>
-        <SearchForm />
-        <MoviesCardList cards={cards} />
+        <SearchForm
+          request={request}
+          setRequest={setRequest}
+          onSubmit={onSubmitForm}
+        />
+        {
+          loading ?
+          <Preloader /> :
+          <MoviesCardList cards={cards} />
+        }
       </main>
       <Footer />
     </>

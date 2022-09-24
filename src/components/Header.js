@@ -34,7 +34,7 @@ function Header({ loggedIn }) {
         ) :
         (
           <header className="header header__notlog">
-            <img src={logo} alt="logo" className="header__logo" />
+            <Link to="/"><img src={logo} alt="logo" className="header__logo" /></Link>
             <div className="header__entry-buttons">
               <Link to="/signup"><button className="header__sign-up" type="button">Регистрация</button></Link>
               <Link to="/signin"><button className="header__sign-in" type="button">Войти</button></Link>

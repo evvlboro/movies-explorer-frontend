@@ -3,7 +3,7 @@ import MoviesCard from "./MoviesCard";
 
 function MoviesCardList({cards, fromSavedPage}){
   // let initalCount = Math.trunc((window.screen.width - 140) / 364);
-  let initalCount = 3;
+  let initalCount = 9;
   const addCount = 3;
   if(fromSavedPage === true) {
     initalCount = cards.length;
@@ -16,10 +16,10 @@ function MoviesCardList({cards, fromSavedPage}){
         {
           cards.slice(0, count).map((card, i) => (
             <MoviesCard
-              key={card._id}
-              title={card.title}
+              key={card.id}
+              title={card.nameRU}
               duration={card.duration}
-              imgUrl={card.imgUrl}
+              imgUrl={` https://api.nomoreparties.co${card.image.url}`}
               fromSavedPage={fromSavedPage}
             />
           ))

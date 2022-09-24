@@ -143,3 +143,6 @@
 @import url(./block/popup/__container/popup__container.css);
 @import url(./block/header/__notlog/header__unlog.css);
 @import url(./block/block/__link-container-list/block__link-container-list.css);
+
+@import url(./block/search-form/__error/search-form__error.css);
+@import url(./block/search-form/_error/search-form_error.css);
