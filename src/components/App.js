@@ -17,6 +17,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [registerError, setRegisterError] = React.useState('');
+  const [loginError, setLoginError] = React.useState('');
 
   const navigate = useNavigate();
 
@@ -43,8 +44,9 @@ function App() {
           localStorage.setItem('jwt', data.token);
           navigate('/movies');
         }
-      }).catch(err => {
-        console.log(err);
+      }).catch(error => {
+        setLoginError(error);
+        console.log(error);
       });
   };
 
@@ -55,7 +57,7 @@ function App() {
         <Route path="/movies" element={<Movies loggedIn={loggedIn}/>} />
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />
-        <Route path="/signin" element={<Login onLogin={handleLogin} />} />
+        <Route path="/signin" element={<Login onLogin={handleLogin} loginError={loginError}/>} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
