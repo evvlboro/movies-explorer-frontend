@@ -1,6 +1,9 @@
+import React from "react";
+
 function FilterCheckbox({shorts, setShorts}) {
   const handleChange = (event) => {
     setShorts(event.target.checked);
+    localStorage.setItem('shorts', event.target.checked);
   }
 
   return (

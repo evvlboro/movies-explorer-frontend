@@ -1,0 +1,11 @@
+.auth__server-error {
+  text-align: center;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+
+  color: #EE3465;
+
+  margin-bottom: 16px;
+}

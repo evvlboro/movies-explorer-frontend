@@ -16,6 +16,7 @@ import NotFound from './NotFound';
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [loggedIn, setLoggedIn] = React.useState(false);
+  const [registerError, setRegisterError] = React.useState('');
 
   const navigate = useNavigate();
 
@@ -27,8 +28,8 @@ function App() {
         navigate('/movies');
       })
       .catch((error) => {
+        setRegisterError(error);
         console.log(error);
-        return console.log(error.message || 'Что-то пошло не так');
       });
   }
 
@@ -53,7 +54,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/movies" element={<Movies loggedIn={loggedIn}/>} />
         <Route path="/saved-movies" element={<SavedMovies />} />
-        <Route path="/signup" element={<Register onRegister={handleRegister}/>} />
+        <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />
         <Route path="/signin" element={<Login onLogin={handleLogin} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />

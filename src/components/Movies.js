@@ -12,7 +12,7 @@ function Movies({loggedIn}) {
   const [cards, setCards] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [request, setRequest] = React.useState('');
-  const [shorts, setShorts] = React.useState(true);
+  const [shorts, setShorts] = React.useState(localStorage.getItem('shorts') === 'true');
   const [requestError, setRequestError] = React.useState(false);
   const [isInitial, setIsInitial] = React.useState(true);
 
@@ -22,22 +22,34 @@ function Movies({loggedIn}) {
 
     moviesApi.getInitalCardsList()
       .then((initalCards) => {
-        setCards(initalCards.filter((element) => {
+        const filteredCards = initalCards.filter((element) => {
           if (!shorts && element.duration < 40)
             return false;
           else if (element.nameRU.includes(request) || element.nameEN.includes(request))
             return true;
           else
             return false;
-        }));
+        })
+        setCards(filteredCards);
         setLoading(false);
+        localStorage.setItem('cards', JSON.stringify(filteredCards));
       })
       .catch((error) => {
         setLoading(false);
         console.log(error);
         setRequestError(true);
-      });
+    });
+
+    localStorage.setItem('request', request);
   }
+
+  React.useEffect(() => {
+    const savedRequest = localStorage.getItem('request');
+    const savedCards = JSON.parse(localStorage.getItem('cards'));
+
+    setRequest(savedRequest);
+    setCards(savedCards);
+  }, []);
 
   return (
     <>

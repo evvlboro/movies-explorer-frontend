@@ -2,6 +2,8 @@ import React from 'react';
 import MoviesCard from "./MoviesCard";
 import { useWindowSize } from '../utils/hooks/useWindowSize';
 
+const BASE_URL = 'https://api.nomoreparties.co';
+
 function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
   // let initalCount = Math.trunc((window.screen.width - 140) / 364);
   const [cardsCount, setCardsCount] = React.useState(1);
@@ -43,10 +45,18 @@ function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
           cards.slice(0, cardsCount).map((card, i) => (
             <MoviesCard
               key={card.id}
-              title={card.nameRU}
-              duration={card.duration}
-              imgUrl={` https://api.nomoreparties.co${card.image.url}`}
               fromSavedPage={fromSavedPage}
+              country={card.country}
+              director={card.director}
+              duration={card.duration}
+              year={card.year}
+              description={card.description}
+              image={`${BASE_URL}${card.image.url}`}
+              trailerLink={card.trailerLink}
+              nameRU={card.nameRU}
+              nameEN={card.nameEN}
+              thumbnail={`${BASE_URL}${card.image.formats.thumbnail.url}`}
+              movieId={card.id}
             />
           )) :
           !isInitial && <p>Ничего не найдено</p>
