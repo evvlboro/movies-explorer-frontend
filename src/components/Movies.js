@@ -44,8 +44,8 @@ function Movies({loggedIn}) {
   }
 
   React.useEffect(() => {
-    const savedRequest = localStorage.getItem('request');
-    const savedCards = JSON.parse(localStorage.getItem('cards'));
+    const savedRequest = localStorage.getItem('request') || '';
+    const savedCards = JSON.parse(localStorage.getItem('cards')) || [];
 
     setRequest(savedRequest);
     setCards(savedCards);

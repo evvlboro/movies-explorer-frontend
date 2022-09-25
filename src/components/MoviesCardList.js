@@ -35,35 +35,38 @@ function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
     <section className="movies-card-list">
       <div className="movies-card-list__container">
         {
-          requestError ?
+          requestError && (
             <p>
               Во время запроса произошла ошибка.
               Возможно, проблема с соединением или сервер недоступен.
               Подождите немного и попробуйте ещё раз.
-            </p> :
-          cards.length > 0 ?
-          cards.slice(0, cardsCount).map((card, i) => (
-            <MoviesCard
-              key={card.id}
-              fromSavedPage={fromSavedPage}
-              country={card.country}
-              director={card.director}
-              duration={card.duration}
-              year={card.year}
-              description={card.description}
-              image={`${BASE_URL}${card.image.url}`}
-              trailerLink={card.trailerLink}
-              nameRU={card.nameRU}
-              nameEN={card.nameEN}
-              thumbnail={`${BASE_URL}${card.image.formats.thumbnail.url}`}
-              movieId={card.id}
-            />
-          )) :
-          !isInitial && <p>Ничего не найдено</p>
+            </p>
+          )
+        }
+        {
+          !requestError && cards.length > 0
+            ? cards.slice(0, cardsCount).map((card) => (
+              <MoviesCard
+                key={card.id}
+                fromSavedPage={fromSavedPage}
+                country={card.country}
+                director={card.director}
+                duration={card.duration}
+                year={card.year}
+                description={card.description}
+                image={`${BASE_URL}${card.image.url}`}
+                trailerLink={card.trailerLink}
+                nameRU={card.nameRU}
+                nameEN={card.nameEN}
+                thumbnail={`${BASE_URL}${card.image.formats.thumbnail.url}`}
+                movieId={card.id}
+              />
+            ))
+            : !isInitial && <p>Ничего не найдено</p>
         }
       </div>
       {
-        (fromSavedPage !== true && cards.length > 0 && cardsCount < cards.length ) &&
+        (fromSavedPage !== true && cards.length > 0 && cardsCount < cards.length) &&
         (
           <button
             className="movies-card-list__more-btn"
@@ -75,7 +78,6 @@ function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
           </button>
         )
       }
-
     </section>
   );
 }

@@ -21,7 +21,6 @@ function SearchForm({request, setRequest, onSubmit, shorts, setShorts}) {
     setRequest(value);
   }
 
-
   return (
     <form
       className="search-form__container"
@@ -32,7 +31,7 @@ function SearchForm({request, setRequest, onSubmit, shorts, setShorts}) {
           className="search-form__input"
           placeholder='Фильм'
           name="request"
-          value={request}
+          value={request || ""}
           onChange={handleRequestChange}
         />
         <button
