@@ -1,5 +1,6 @@
 import React from 'react';
 import { saveMovie, deleteMovie } from '../utils/MainApi';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function MoviesCard({
   fromSavedPage,
@@ -14,11 +15,20 @@ function MoviesCard({
   nameEN,
   thumbnail,
   movieId,
-  isSaved
+  savedMovies
 }) {
-  const [isSavedState, setIsSavedState] = React.useState(isSaved);
+  const currentUser = React.useContext(CurrentUserContext);
 
-  
+  const isSaved = savedMovies.some((movie) => {
+    return movie.movieId === movieId && movie.owner === currentUser._id;
+  });
+
+  const currentMovie = savedMovies.find((movie) => {
+    return movie.movieId === movieId && movie.owner === currentUser._id;
+  }) || '';
+
+  const [isSavedState, setIsSavedState] = React.useState(isSaved);
+  const [currentMovieId, setCurrentMovieId] = React.useState(currentMovie._id);
 
   const hours = Math.trunc(duration / 60);
   const minutes = duration % 60;
@@ -27,6 +37,18 @@ function MoviesCard({
 
   const handleSaveBtn = () => {
     if (isSavedState) {
+      deleteMovie(
+        localStorage.getItem('jwt'),
+        currentMovieId)
+        .then((movie)=>{
+          console.log(movie.data._id, ' deleted')
+          setIsSavedState(false);
+          console.log('card deleted');
+          setCurrentMovieId('');
+        })
+        .catch((error) => {
+          console.log(error)
+        })
 
     } else {
       saveMovie(
@@ -45,13 +67,18 @@ function MoviesCard({
           movieId: movieId
         }
       ).then((movie)=> {
-        console.log(movie._id);
+        console.log(movie._id + ' saved');
         setIsSavedState(true);
+        setCurrentMovieId(movie._id);
       }).catch((error)=>{
         console.log(error);
       })
       }
     }
+
+  React.useEffect(()=>{
+    console.log(isSaved);
+  }, [isSaved])
 
   return (
     <section className="movies-card">

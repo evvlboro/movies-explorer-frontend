@@ -15,7 +15,9 @@ import NotFound from './NotFound';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
+
   const [loggedIn, setLoggedIn] = React.useState(false);
+
   const [registerError, setRegisterError] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
 
@@ -42,10 +44,10 @@ function App() {
         if (data.token) {
           console.log(loggedIn)
           setLoggedIn(true);
-          console.log(loggedIn)
+          console.log('setLoggedIn(true)');
+          // console.log(loggedIn)
           localStorage.setItem('jwt', data.token);
           navigate('/movies');
-          console.log(loggedIn)
         }
       }).catch(error => {
         setLoginError(error);
@@ -53,11 +55,10 @@ function App() {
       });
   };
 
-  React.useState(() => {
+  React.useEffect(() => {
     getUserInfo(localStorage.getItem('jwt'))
       .then((data) => {
         setCurrentUser(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error)

@@ -31,20 +31,11 @@ function Movies({loggedIn}) {
             return true;
           else
             return false;
-        })
+        });
 
         setCards(filteredCards);
         setLoading(false);
         localStorage.setItem('cards', JSON.stringify(filteredCards));
-
-        getSavedMovies(localStorage.getItem('jwt'))
-          .then((data) => {
-            setSavedMoives(data);
-            localStorage.setItem('savedMovies', JSON.stringify(data));
-          })
-          .catch((error) => {
-            console.log(error);
-          })
       })
       .catch((error) => {
         setLoading(false);
@@ -56,6 +47,15 @@ function Movies({loggedIn}) {
   }
 
   React.useEffect(() => {
+    getSavedMovies(localStorage.getItem('jwt'))
+      .then((data) => {
+        setSavedMoives(data);
+        localStorage.setItem('savedMovies', JSON.stringify(data));
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
     const requestFromLocalStorage = localStorage.getItem('request') || '';
     const cardsFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || [];
     const savedMoviesFromLocalStorage = JSON.parse(localStorage.getItem('savedMovies')) || [];
