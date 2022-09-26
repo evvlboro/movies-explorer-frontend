@@ -7,6 +7,7 @@ import MoviesCardList from './MoviesCardList';
 import Preloader from './Preloader';
 
 import moviesApi from '../utils/MoviesApi';
+import { getSavedMovies } from '../utils/MainApi';
 
 function Movies({loggedIn}) {
   const [cards, setCards] = React.useState([]);
@@ -15,6 +16,7 @@ function Movies({loggedIn}) {
   const [shorts, setShorts] = React.useState(localStorage.getItem('shorts') === 'true');
   const [requestError, setRequestError] = React.useState(false);
   const [isInitial, setIsInitial] = React.useState(true);
+  const [savedMovies, setSavedMoives] = React.useState([]);
 
   const onSubmitForm = () => {
     setIsInitial(false);
@@ -30,9 +32,19 @@ function Movies({loggedIn}) {
           else
             return false;
         })
+
         setCards(filteredCards);
         setLoading(false);
         localStorage.setItem('cards', JSON.stringify(filteredCards));
+
+        getSavedMovies(localStorage.getItem('jwt'))
+          .then((data) => {
+            setSavedMoives(data);
+            localStorage.setItem('savedMovies', JSON.stringify(data));
+          })
+          .catch((error) => {
+            console.log(error);
+          })
       })
       .catch((error) => {
         setLoading(false);
@@ -44,11 +56,13 @@ function Movies({loggedIn}) {
   }
 
   React.useEffect(() => {
-    const savedRequest = localStorage.getItem('request') || '';
-    const savedCards = JSON.parse(localStorage.getItem('cards')) || [];
+    const requestFromLocalStorage = localStorage.getItem('request') || '';
+    const cardsFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || [];
+    const savedMoviesFromLocalStorage = JSON.parse(localStorage.getItem('savedMovies')) || [];
 
-    setRequest(savedRequest);
-    setCards(savedCards);
+    setRequest(requestFromLocalStorage);
+    setCards(cardsFromLocalStorage);
+    setSavedMoives(savedMoviesFromLocalStorage)
   }, []);
 
   return (
@@ -69,6 +83,7 @@ function Movies({loggedIn}) {
             isInitial={isInitial}
             cards={cards}
             requestError={requestError}
+            savedMovies={savedMovies}
           />
         }
       </main>

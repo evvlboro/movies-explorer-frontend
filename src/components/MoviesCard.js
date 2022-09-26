@@ -1,4 +1,5 @@
-import { saveMovie } from '../utils/MainApi';
+import React from 'react';
+import { saveMovie, deleteMovie } from '../utils/MainApi';
 
 function MoviesCard({
   fromSavedPage,
@@ -12,50 +13,45 @@ function MoviesCard({
   nameRU,
   nameEN,
   thumbnail,
-  movieId
+  movieId,
+  isSaved
 }) {
+  const [isSavedState, setIsSavedState] = React.useState(isSaved);
+
+  
+
   const hours = Math.trunc(duration / 60);
   const minutes = duration % 60;
   const hoursString = hours > 0 ? `${hours} ч` : '';
   const minutesString = minutes > 0 ? `${minutes} мин` : '';
 
   const handleSaveBtn = () => {
-    const movie = {
-      country: country,
-      director: director,
-      duration: duration,
-      year: year,
-      description: description,
-      image: image,
-      trailerLink: trailerLink,
-      nameRU: nameRU,
-      nameEN: nameEN,
-      thumbnail: thumbnail,
-      movieId: movieId
-    };
-    console.log(movie);
-    console.log(localStorage.getItem('jwt'));
-    saveMovie(
-      localStorage.getItem('jwt'),
-      {
-        country: country,
-        director: director,
-        duration: duration,
-        year: year,
-        description: description,
-        image: image,
-        trailerLink: trailerLink,
-        nameRU: nameRU,
-        nameEN: nameEN,
-        thumbnail: thumbnail,
-        movieId: movieId
+    if (isSavedState) {
+
+    } else {
+      saveMovie(
+        localStorage.getItem('jwt'),
+        {
+          country: country,
+          director: director,
+          duration: duration,
+          year: year,
+          description: description,
+          image: image,
+          trailerLink: trailerLink,
+          nameRU: nameRU,
+          nameEN: nameEN,
+          thumbnail: thumbnail,
+          movieId: movieId
+        }
+      ).then((movie)=> {
+        console.log(movie._id);
+        setIsSavedState(true);
+      }).catch((error)=>{
+        console.log(error);
+      })
       }
-    ).then(()=> {
-      console.log('film saved');
-    }).catch((error)=>{
-      console.log(error);
-    })
-  }
+    }
 
   return (
     <section className="movies-card">
@@ -69,7 +65,7 @@ function MoviesCard({
             (<button className="movies-card__delete-btn" type="button" />) :
             (
               <button
-                className="movies-card__save-btn"
+                className={`movies-card__save-btn ${isSavedState && 'movies-card__save-btn_active'}`}
                 type="button"
                 onClick={handleSaveBtn}
               />

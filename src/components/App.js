@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-import { register, authorize } from '../utils/MainApi.js';
+import { register, authorize, getUserInfo } from '../utils/MainApi.js';
 
 import Main from './Main';
 import Movies from './Movies';
@@ -40,15 +40,29 @@ function App() {
         console.log(data);
         if (!data) throw new Error('Неверные имя пользователя или пароль')
         if (data.token) {
+          console.log(loggedIn)
           setLoggedIn(true);
+          console.log(loggedIn)
           localStorage.setItem('jwt', data.token);
           navigate('/movies');
+          console.log(loggedIn)
         }
       }).catch(error => {
         setLoginError(error);
         console.log(error);
       });
   };
+
+  React.useState(() => {
+    getUserInfo(localStorage.getItem('jwt'))
+      .then((data) => {
+        setCurrentUser(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [loggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

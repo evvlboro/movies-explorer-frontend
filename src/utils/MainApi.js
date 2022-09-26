@@ -25,21 +25,7 @@ export const authorize = (email, password) => {
     .then(checkAnswer)
 }
 
-export const getMyUser = (token) => {
-  return fetch(`${BASE_URL}/users/me`, {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    }
-  })
-    .then(checkAnswer);
-}
-
 export const saveMovie = (token, movie) => {
-  console.log("🚀 ~ file: MainApi.js ~ line 41 ~ saveMovie ~ token", token)
-  console.log('movie: ', movie.movieId);
   return fetch(`${BASE_URL}/movies`, {
     method: 'POST',
     headers: {
@@ -48,6 +34,39 @@ export const saveMovie = (token, movie) => {
       'Authorization': token
     },
     body: JSON.stringify(movie)
+  }).then(checkAnswer)
+}
+
+export const getSavedMovies = (token) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': token
+    }
+  }).then(checkAnswer)
+}
+
+export const deleteMovie = (token, id) => {
+  return fetch(`${BASE_URL}/movies/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': token
+    }
+  }).then(checkAnswer)
+}
+
+export const getUserInfo = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': token
+    }
   }).then(checkAnswer)
 }
 

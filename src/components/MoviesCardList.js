@@ -4,7 +4,7 @@ import { useWindowSize } from '../utils/hooks/useWindowSize';
 
 const BASE_URL = 'https://api.nomoreparties.co';
 
-function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
+function MoviesCardList({cards, fromSavedPage, requestError, isInitial, savedMovies}){
   // let initalCount = Math.trunc((window.screen.width - 140) / 364);
   const [cardsCount, setCardsCount] = React.useState(1);
   const [addCount, setAddCount] = React.useState(1);
@@ -45,8 +45,13 @@ function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
         }
         {
           !requestError && cards.length > 0
-            ? cards.slice(0, cardsCount).map((card) => (
-              <MoviesCard
+            ? cards.slice(0, cardsCount).map((card) => {
+
+              const isSaved = savedMovies.some((movie)=>{
+                return movie.movieId === card.id;
+              })
+
+              return <MoviesCard
                 key={card.id}
                 fromSavedPage={fromSavedPage}
                 country={card.country}
@@ -60,8 +65,9 @@ function MoviesCardList({cards, fromSavedPage, requestError, isInitial}){
                 nameEN={card.nameEN}
                 thumbnail={`${BASE_URL}${card.image.formats.thumbnail.url}`}
                 movieId={card.id}
+                isSaved={isSaved}
               />
-            ))
+              })
             : !isInitial && <p>Ничего не найдено</p>
         }
       </div>
