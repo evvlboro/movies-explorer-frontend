@@ -4,7 +4,7 @@ import { useWindowSize } from '../utils/hooks/useWindowSize';
 
 const BASE_URL = 'https://api.nomoreparties.co';
 
-function MoviesCardList({cards, fromSavedPage, requestError, isInitial, savedMovies}){
+function MoviesCardList({ cards, fromSavedPage, requestError, isInitial, savedMovies, setSavedMoives}){
   const [cardsCount, setCardsCount] = React.useState(1);
   const [addCount, setAddCount] = React.useState(1);
   const [windowWidth] = useWindowSize();

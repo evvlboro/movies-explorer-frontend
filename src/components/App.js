@@ -12,6 +12,7 @@ import Register from './Register';
 import Login from './Login';
 import Profile from './Profile';
 import NotFound from './NotFound';
+import { ProtectedRoute } from './ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -59,6 +60,7 @@ function App() {
     getUserInfo(localStorage.getItem('jwt'))
       .then((data) => {
         setCurrentUser(data);
+        setLoggedIn(true);
       })
       .catch((error) => {
         console.log(error)
@@ -68,7 +70,8 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main  loggedIn={loggedIn} fromMainPage={true}/>} />
+
         <Route path="/movies" element={<Movies loggedIn={loggedIn}/>} />
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />

@@ -4,7 +4,7 @@ import MenuPopup from './MenuPopup';
 import { Link } from 'react-router-dom';
 
 
-function Header({ loggedIn }) {
+function Header({ loggedIn, fromMainPage = false }) {
   const [ popupIsOpened, setPopupIsOpened ] = useState(false);
 
   const onMenuBtnClick = () => {
@@ -20,7 +20,7 @@ function Header({ loggedIn }) {
       <MenuPopup isOpened={popupIsOpened} onClose={onCloseMenuPopup} />
       { loggedIn ?
         (
-          <header className='header__container'>
+          <header className={`header__container ${fromMainPage && 'header_bgc_blue'}`}>
             <div className="header">
                 <Link to="/"><img src={logo} alt="logo" className="header__logo" /></Link>
               <div className="header__film-container">
@@ -33,7 +33,7 @@ function Header({ loggedIn }) {
           </header>
         ) :
         (
-          <header className="header header__notlog">
+          <header className={`header header__notlog ${fromMainPage && 'header_bgc_blue'}`}>
             <Link to="/"><img src={logo} alt="logo" className="header__logo" /></Link>
             <div className="header__entry-buttons">
               <Link to="/signup"><button className="header__sign-up" type="button">Регистрация</button></Link>

@@ -50,19 +50,20 @@ function Movies({loggedIn}) {
     getSavedMovies(localStorage.getItem('jwt'))
       .then((data) => {
         setSavedMoives(data);
-        localStorage.setItem('savedMovies', JSON.stringify(data));
+        // console.log(data);
+        // localStorage.setItem('savedMovies', JSON.stringify(data));
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
 
     const requestFromLocalStorage = localStorage.getItem('request') || '';
     const cardsFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || [];
-    const savedMoviesFromLocalStorage = JSON.parse(localStorage.getItem('savedMovies')) || [];
+    // const savedMoviesFromLocalStorage = JSON.parse(localStorage.getItem('savedMovies')) || [];
 
     setRequest(requestFromLocalStorage);
     setCards(cardsFromLocalStorage);
-    setSavedMoives(savedMoviesFromLocalStorage)
+    // setSavedMoives(savedMoviesFromLocalStorage);
   }, []);
 
   return (

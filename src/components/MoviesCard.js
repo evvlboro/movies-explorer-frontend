@@ -77,8 +77,8 @@ function MoviesCard({
     }
 
   React.useEffect(()=>{
-    console.log(isSaved);
-  }, [isSaved])
+
+  }, [])
 
   return (
     <section className="movies-card">
