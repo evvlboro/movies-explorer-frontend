@@ -65,6 +65,17 @@ function Movies({loggedIn}) {
     // setSavedMoives(savedMoviesFromLocalStorage);
   }, []);
 
+  React.useEffect(() => {
+    const filtredCards = cards.filter((movie)=>{
+      if(!shorts && movie.duration < 40) {
+        return false;
+      } else {
+        return true;
+      }
+  });
+    setCards(filtredCards);
+  }, [shorts]);
+
   return (
     <>
       <Header loggedIn={loggedIn}/>

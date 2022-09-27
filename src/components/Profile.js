@@ -17,15 +17,15 @@ function Profile({ onLogout, onProfileUpdate, updateUserError, updateSuccess }) 
   const [nameError, setNameError] = React.useState('');
   const [emailError, setEmailError] = React.useState('');
 
-  const [formValid, setFormValid] = React.useState(true);
+  const [formValid, setFormValid] = React.useState(false);
 
   React.useEffect(() => {
-    if (emailError || nameError) {
+    if (emailError || nameError || (currentUser.name === userData.name && currentUser.email === userData.email)) {
       setFormValid(false);
     } else {
       setFormValid(true);
     }
-  }, [emailError, nameError]);
+  }, [emailError, nameError, currentUser.name, currentUser.email, userData.name, userData.email]);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
