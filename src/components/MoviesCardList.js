@@ -4,7 +4,15 @@ import { useWindowSize } from '../utils/hooks/useWindowSize';
 
 const BASE_URL = 'https://api.nomoreparties.co';
 
-function MoviesCardList({ cards, fromSavedPage, requestError, isInitial, savedMovies, setSavedMoives}){
+function MoviesCardList({
+  cards,
+  fromSavedPage = false,
+  requestError = '',
+  isInitial,
+  savedMovies,
+  cardsUpdate,
+  setCardsUpdate
+}){
   const [cardsCount, setCardsCount] = React.useState(1);
   const [addCount, setAddCount] = React.useState(1);
   const [windowWidth] = useWindowSize();
@@ -45,29 +53,34 @@ function MoviesCardList({ cards, fromSavedPage, requestError, isInitial, savedMo
         {
           !requestError && cards.length > 0
             ? cards.slice(0, cardsCount).map((card) => {
+              const thumbnail = fromSavedPage ? card.thumbnail : `${BASE_URL}${card.image.formats.thumbnail.url}`;
+              const cardId = fromSavedPage ? card.movieId : card.id;
+              const imageUrl = fromSavedPage ? card.image : `${BASE_URL}${card.image.url}`;
 
               return <MoviesCard
-                key={card.id}
+                key={cardId}
                 fromSavedPage={fromSavedPage}
                 country={card.country}
                 director={card.director}
                 duration={card.duration}
                 year={card.year}
                 description={card.description}
-                image={`${BASE_URL}${card.image.url}`}
+                image={imageUrl}
                 trailerLink={card.trailerLink}
                 nameRU={card.nameRU}
                 nameEN={card.nameEN}
-                thumbnail={`${BASE_URL}${card.image.formats.thumbnail.url}`}
-                movieId={card.id}
+                thumbnail={thumbnail}
+                movieId={cardId}
                 savedMovies={savedMovies}
+                cardsUpdate={cardsUpdate}
+                setCardsUpdate={setCardsUpdate}
               />
               })
             : !isInitial && <p>Ничего не найдено</p>
         }
       </div>
       {
-        (fromSavedPage !== true && cards.length > 0 && cardsCount < cards.length) &&
+        (cards.length > 0 && cardsCount < cards.length) &&
         (
           <button
             className="movies-card-list__more-btn"

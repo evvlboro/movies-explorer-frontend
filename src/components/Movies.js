@@ -27,7 +27,8 @@ function Movies({loggedIn}) {
         const filteredCards = initalCards.filter((element) => {
           if (!shorts && element.duration < 40)
             return false;
-          else if (element.nameRU.includes(request) || element.nameEN.includes(request))
+          else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
+                  || element.nameEN.toLowerCase().includes(request.toLowerCase()))
             return true;
           else
             return false;
@@ -50,8 +51,6 @@ function Movies({loggedIn}) {
     getSavedMovies(localStorage.getItem('jwt'))
       .then((data) => {
         setSavedMoives(data);
-        // console.log(data);
-        // localStorage.setItem('savedMovies', JSON.stringify(data));
       })
       .catch((error) => {
         console.log(error);

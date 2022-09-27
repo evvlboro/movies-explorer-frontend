@@ -41,13 +41,9 @@ function App() {
   function handleLogin({email, password}) {
     authorize(email, password)
       .then(data => {
-        console.log(data);
         if (!data) throw new Error('Неверные имя пользователя или пароль')
         if (data.token) {
-          console.log(loggedIn)
           setLoggedIn(true);
-          console.log('setLoggedIn(true)');
-          // console.log(loggedIn)
           localStorage.setItem('jwt', data.token);
           navigate('/movies');
         }
@@ -78,6 +74,9 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('shorts');
+    localStorage.removeItem('cards');
+    localStorage.removeItem('request');
     setLoggedIn(false);
     navigate('/');
   }
@@ -104,7 +103,7 @@ function App() {
         }
         {
           loggedIn ?
-          <Route path="/saved-movies" element={<SavedMovies />} />
+          <Route path="/saved-movies" element={<SavedMovies loggedIn={loggedIn} />} />
           : <Route path="/saved-movies" element={<Navigate to="/" replace/>} />
         }
         {

@@ -15,7 +15,9 @@ function MoviesCard({
   nameEN,
   thumbnail,
   movieId,
-  savedMovies
+  savedMovies,
+  cardsUpdate,
+  setCardsUpdate
 }) {
   const currentUser = React.useContext(CurrentUserContext);
 
@@ -35,21 +37,23 @@ function MoviesCard({
   const hoursString = hours > 0 ? `${hours} ч` : '';
   const minutesString = minutes > 0 ? `${minutes} мин` : '';
 
+  const hadleRemoveBtn = () => {
+    deleteMovie(
+      localStorage.getItem('jwt'),
+      currentMovieId)
+      .then(() => {
+        setIsSavedState(false);
+        setCurrentMovieId('');
+        setCardsUpdate(cardsUpdate + 1);
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   const handleSaveBtn = () => {
     if (isSavedState) {
-      deleteMovie(
-        localStorage.getItem('jwt'),
-        currentMovieId)
-        .then((movie)=>{
-          console.log(movie.data._id, ' deleted')
-          setIsSavedState(false);
-          console.log('card deleted');
-          setCurrentMovieId('');
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-
+      hadleRemoveBtn();
     } else {
       saveMovie(
         localStorage.getItem('jwt'),
@@ -67,7 +71,6 @@ function MoviesCard({
           movieId: movieId
         }
       ).then((movie)=> {
-        console.log(movie._id + ' saved');
         setIsSavedState(true);
         setCurrentMovieId(movie._id);
       }).catch((error)=>{
@@ -75,10 +78,6 @@ function MoviesCard({
       })
       }
     }
-
-  React.useEffect(()=>{
-
-  }, [])
 
   return (
     <section className="movies-card">
@@ -89,7 +88,12 @@ function MoviesCard({
         </div>
         {
           fromSavedPage ?
-            (<button className="movies-card__delete-btn" type="button" />) :
+            (<button
+              className="movies-card__delete-btn"
+              type="button"
+              onClick={hadleRemoveBtn}
+              />
+            ) :
             (
               <button
                 className={`movies-card__save-btn ${isSavedState && 'movies-card__save-btn_active'}`}

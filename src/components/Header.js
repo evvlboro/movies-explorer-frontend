@@ -25,7 +25,7 @@ function Header({ loggedIn, fromMainPage = false }) {
                 <Link to="/"><img src={logo} alt="logo" className="header__logo" /></Link>
               <div className="header__film-container">
                   <Link to="/movies" className='header__films-btn'>Фильмы</Link>
-                  <Link to="/saved-movies" className='header__saved-films-btn'>Сохраненные фыльмы</Link>
+                  <Link to="/saved-movies" className='header__saved-films-btn'>Сохраненные фильмы</Link>
               </div>
               <Link to="/profile" ><button className="header__acc-btn" type="button"/></Link>
               <button className="header__menu-btn" onClick={onMenuBtnClick} type="button" />

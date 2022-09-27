@@ -4,7 +4,7 @@ import Header from './Header';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Profile({ onLogout, onProfileUpdate, updateUserError, updateSuccess }) {
-  const currentUser = React.useContext(CurrentUserContext);;
+  const currentUser = React.useContext(CurrentUserContext);
 
   const [userData, setUserData] = React.useState({
     name: currentUser.name,
