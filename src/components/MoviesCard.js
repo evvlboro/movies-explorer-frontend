@@ -103,7 +103,9 @@ function MoviesCard({
             )
         }
       </div>
-      <img src={image} alt={nameRU} className="movies-card__img" />
+      <a href={trailerLink} target='_blank' rel="noreferrer">
+        <img src={image} alt={nameRU} className="movies-card__img" />
+      </a>
     </section>
   )
 }

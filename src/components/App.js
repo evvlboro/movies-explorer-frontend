@@ -83,15 +83,24 @@ function App() {
   }
 
   React.useEffect(() => {
-    getUserInfo(localStorage.getItem('jwt'))
-      .then((data) => {
-        setCurrentUser(data);
-        setLoggedIn(true);
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    if (loggedIn){
+      getUserInfo(localStorage.getItem('jwt'))
+        .then((data) => {
+          setCurrentUser(data);
+          setLoggedIn(true);
+        })
+        .catch(() => {
+          setCurrentUser({});
+          setLoggedIn(false);
+        })
+    }
   }, [loggedIn]);
+
+  React.useEffect(() => {
+    if (localStorage.getItem('jwt')) {
+      setLoggedIn(true);
+    }
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -121,7 +130,7 @@ function App() {
         }
         <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />
         <Route path="/signin" element={<Login onLogin={handleLogin} loginError={loginError}/>} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<NotFound navigate={navigate}/>} />
       </Routes>
     </CurrentUserContext.Provider>
   );
