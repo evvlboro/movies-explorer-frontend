@@ -9,8 +9,7 @@ export const register = (email, password, name) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email, password, name })
-  })
-    .then(checkAnswer)
+  }).then(checkAnswer);
 };
 
 export const authorize = (email, password) => {
@@ -21,8 +20,7 @@ export const authorize = (email, password) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({ email, password })
-  })
-    .then(checkAnswer)
+  }).then(checkAnswer);
 }
 
 export const saveMovie = (token, movie) => {
@@ -34,7 +32,7 @@ export const saveMovie = (token, movie) => {
       'Authorization': token
     },
     body: JSON.stringify(movie)
-  }).then(checkAnswer)
+  }).then(checkAnswer);
 }
 
 export const getSavedMovies = (token) => {
@@ -45,7 +43,7 @@ export const getSavedMovies = (token) => {
       'Content-Type': 'application/json',
       'Authorization': token
     }
-  }).then(checkAnswer)
+  }).then(checkAnswer);
 }
 
 export const deleteMovie = (token, id) => {
@@ -56,7 +54,7 @@ export const deleteMovie = (token, id) => {
       'Content-Type': 'application/json',
       'Authorization': token
     }
-  }).then(checkAnswer)
+  }).then(checkAnswer);
 }
 
 export const getUserInfo = (token) => {
@@ -67,7 +65,19 @@ export const getUserInfo = (token) => {
       'Content-Type': 'application/json',
       'Authorization': token
     }
-  }).then(checkAnswer)
+  }).then(checkAnswer);
+}
+
+export const updateUserInfo = (token, userData) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': token
+    },
+    body: JSON.stringify(userData)
+  }).then(checkAnswer);
 }
 
 const checkAnswer = res => res.ok ? res.json() : Promise.reject(`Ошибка: ${res.statusText}`);

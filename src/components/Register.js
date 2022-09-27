@@ -51,7 +51,7 @@ function Register({ onRegister, registerError }) {
       case 'name':
         const reName = /^[a-яёa-z -]{2,30}$/i;
         if (String(value).length === 0) {
-          setEmailError('Имя не может быть пустым');
+          setNameError('Имя не может быть пустым');
         } else if (!value.match(reName)) {
           setNameError('Имя должно содержать только латиницу, кириллицу, пробел и дефис');
         } else {

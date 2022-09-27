@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-import { register, authorize, getUserInfo } from '../utils/MainApi.js';
+import { register, authorize, getUserInfo, updateUserInfo } from '../utils/MainApi.js';
 
 import Main from './Main';
 import Movies from './Movies';
@@ -12,7 +12,6 @@ import Register from './Register';
 import Login from './Login';
 import Profile from './Profile';
 import NotFound from './NotFound';
-import { ProtectedRoute } from './ProtectedRoute';
 
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -21,6 +20,8 @@ function App() {
 
   const [registerError, setRegisterError] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
+  const [updateUserError, setUpdateUserError] = React.useState('');
+  const [updateSuccess, setUpdateSuccess] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -56,6 +57,31 @@ function App() {
       });
   };
 
+  function handleProfileUpdate(userData) {
+    if(userData.name === currentUser.name && userData.email === currentUser.email){
+      setUpdateSuccess(false);
+      setUpdateUserError('Введите другое имя или email');
+    } else {
+      setUpdateUserError('');
+      updateUserInfo(localStorage.getItem('jwt'), userData)
+        .then((data) => {
+          setCurrentUser(data);
+          setUpdateSuccess(true);
+        })
+        .catch((error) => {
+          setUpdateSuccess(false);
+          setUpdateUserError(error);
+          console.log(error);
+        })
+    }
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwt');
+    setLoggedIn(false);
+    navigate('/');
+  }
+
   React.useEffect(() => {
     getUserInfo(localStorage.getItem('jwt'))
       .then((data) => {
@@ -71,12 +97,30 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
         <Route path="/" element={<Main  loggedIn={loggedIn} fromMainPage={true}/>} />
-
-        <Route path="/movies" element={<Movies loggedIn={loggedIn}/>} />
-        <Route path="/saved-movies" element={<SavedMovies />} />
+        {
+          loggedIn ?
+          <Route path="/movies" element={<Movies loggedIn={loggedIn}/>} />
+          : <Route path="movies" element={<Navigate to="/" replace/>} />
+        }
+        {
+          loggedIn ?
+          <Route path="/saved-movies" element={<SavedMovies />} />
+          : <Route path="/saved-movies" element={<Navigate to="/" replace/>} />
+        }
+        {
+          loggedIn ?
+            <Route path="/profile" element={
+              <Profile
+                onLogout={handleLogout}
+                onProfileUpdate={handleProfileUpdate}
+                updateUserError={updateUserError}
+                updateSuccess={updateSuccess}
+              />
+            } />
+          : <Route path="/profile" element={<Navigate to="/" replace/>} />
+        }
         <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />
         <Route path="/signin" element={<Login onLogin={handleLogin} loginError={loginError}/>} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </CurrentUserContext.Provider>

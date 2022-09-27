@@ -17,3 +17,8 @@
 .profile__update:hover {
   opacity: .6;
 }
+
+.profile__update:disabled {
+  color: gray;
+  cursor: not-allowed;
+}
