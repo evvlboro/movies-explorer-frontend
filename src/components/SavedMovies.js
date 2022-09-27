@@ -12,6 +12,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function SavedMovies({ loggedIn }) {
   const [savedMovies, setSavedMoives] = React.useState([]);
+  const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [isInitial, setIsInitial] = React.useState(true);
   const [request, setRequest] = React.useState('');
@@ -31,6 +32,7 @@ function SavedMovies({ loggedIn }) {
         });
 
         setSavedMoives(userData);
+        setSavedFilteredMovies(userData);
       })
       .catch((error) => {
         console.log(error);
@@ -53,8 +55,27 @@ function SavedMovies({ loggedIn }) {
         return false;
     });
 
-    setSavedMoives(filteredCards);
+    setSavedFilteredMovies(filteredCards);
   }
+
+  React.useEffect(() => {
+    const filteredCards = savedMovies.filter((movie) => {
+      if (!shorts && movie.duration < 40)
+        return false;
+      else if (movie.owner !== currentUser._id) {
+        return false;
+      }
+      else if (movie.nameRU.toLowerCase().includes(request.toLowerCase())
+        || movie.nameEN.toLowerCase().includes(request.toLowerCase()))
+        return true;
+      else
+        return false;
+    });
+
+    setSavedFilteredMovies(filteredCards);
+    // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shorts]);
 
   return (
     <>
@@ -72,7 +93,7 @@ function SavedMovies({ loggedIn }) {
             <Preloader /> :
             <MoviesCardList
               isInitial={isInitial}
-              cards={savedMovies}
+              cards={savedFilteredMovies}
               fromSavedPage={true}
               savedMovies={savedMovies}
               cardsUpdate={cardsUpdate}

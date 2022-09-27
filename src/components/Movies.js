@@ -11,6 +11,7 @@ import { getSavedMovies } from '../utils/MainApi';
 
 function Movies({loggedIn}) {
   const [cards, setCards] = React.useState([]);
+  const [cardsWithFilter, setCardsWithFilter] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [request, setRequest] = React.useState('');
   const [shorts, setShorts] = React.useState(localStorage.getItem('shorts') === 'true');
@@ -35,8 +36,10 @@ function Movies({loggedIn}) {
         });
 
         setCards(filteredCards);
+        setCardsWithFilter(filteredCards);
         setLoading(false);
         localStorage.setItem('cards', JSON.stringify(filteredCards));
+        // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
       })
       .catch((error) => {
         setLoading(false);
@@ -58,22 +61,25 @@ function Movies({loggedIn}) {
 
     const requestFromLocalStorage = localStorage.getItem('request') || '';
     const cardsFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || [];
-    // const savedMoviesFromLocalStorage = JSON.parse(localStorage.getItem('savedMovies')) || [];
+    // const cardsWithFilterFromLocalStorage = JSON.parse(localStorage.getItem('cardsWithFilter')) || [];
 
     setRequest(requestFromLocalStorage);
     setCards(cardsFromLocalStorage);
-    // setSavedMoives(savedMoviesFromLocalStorage);
+    // setCardsWithFilter(cardsWithFilterFromLocalStorage);
   }, []);
 
   React.useEffect(() => {
-    const filtredCards = cards.filter((movie)=>{
+    const filteredCards = cards.filter((movie)=>{
       if(!shorts && movie.duration < 40) {
         return false;
       } else {
         return true;
       }
-  });
-    setCards(filtredCards);
+    });
+
+    setCardsWithFilter(filteredCards);
+    // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shorts]);
 
   return (
@@ -92,7 +98,7 @@ function Movies({loggedIn}) {
           <Preloader /> :
           <MoviesCardList
             isInitial={isInitial}
-            cards={cards}
+            cards={cardsWithFilter}
             requestError={requestError}
             savedMovies={savedMovies}
           />
