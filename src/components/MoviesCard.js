@@ -21,8 +21,16 @@ function MoviesCard({
 }) {
   const currentUser = React.useContext(CurrentUserContext);
 
-  const [isSavedState, setIsSavedState] = React.useState(false);
-  const [currentMovieId, setCurrentMovieId] = React.useState('');
+  const [isSavedState, setIsSavedState] = React.useState(
+    savedMovies.some((movie) => {
+      return movie.movieId === movieId && movie.owner === currentUser._id;
+    })
+  );
+  const [currentMovieId, setCurrentMovieId] = React.useState(
+    savedMovies.find((movie) => {
+      return movie.movieId === movieId && movie.owner === currentUser._id;
+    }) || ''
+  );
 
   const hours = Math.trunc(duration / 60);
   const minutes = duration % 60;
@@ -36,9 +44,9 @@ function MoviesCard({
       .then(() => {
         setIsSavedState(false);
         setCurrentMovieId('');
-        if (cardsUpdate) {
-          setCardsUpdate(cardsUpdate + 1);
-        }
+        // if (cardsUpdate) {
+        setCardsUpdate(cardsUpdate + 1);
+        // }
       })
       .catch((error) => {
         console.log(error)
