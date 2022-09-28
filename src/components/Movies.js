@@ -11,13 +11,25 @@ import { getSavedMovies } from '../utils/MainApi';
 
 function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
   const [cards, setCards] = React.useState(JSON.parse(localStorage.getItem('cards')) || []);
-  const [cardsWithFilter, setCardsWithFilter] = React.useState(JSON.parse(localStorage.getItem('cardsWithFilter')) || []);
+  const [fCards, setFCards] = React.useState(JSON.parse(localStorage.getItem('fCards')) || [])
   const [loading, setLoading] = React.useState(false);
-  const [request, setRequest] = React.useState('');
+  const [request, setRequest] = React.useState(localStorage.getItem('request') || '');
   const [shorts, setShorts] = React.useState(localStorage.getItem('shorts') === 'true');
   const [requestError, setRequestError] = React.useState(false);
   const [isInitial, setIsInitial] = React.useState(true);
   const [savedMovies, setSavedMoives] = React.useState([]);
+
+  const filterCards = () => {
+    return cards.filter((element) => {
+      if (!shorts && element.duration < 40)
+        return false;
+      else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
+        || element.nameEN.toLowerCase().includes(request.toLowerCase()))
+        return true;
+      else
+        return false;
+    });
+  }
 
   const onSubmitForm = () => {
     if (firstSubmit)
@@ -27,44 +39,23 @@ function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
       setFirstSubmit(false);
       moviesApi.getInitalCardsList()
         .then((initalCards) => {
-          const filteredCards = initalCards.filter((element) => {
-            if (!shorts && element.duration < 40)
-              return false;
-            else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
-                    || element.nameEN.toLowerCase().includes(request.toLowerCase()))
-              return true;
-            else
-              return false;
-          });
-
           setCards(initalCards);
-          setCardsWithFilter(filteredCards);
-          setLoading(false);
           localStorage.setItem('cards', JSON.stringify(initalCards));
-          localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
+          localStorage.setItem('request', request);
+          localStorage.setItem('shorts', shorts);
+          setFCards(filterCards());
+          setLoading(false);
         })
         .catch((error) => {
           setLoading(false);
           console.log(error);
           setRequestError(true);
       });
-    } else {
-      const filteredCards = cards.filter((element) => {
-        if (!shorts && element.duration < 40)
-          return false;
-        else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
-          || element.nameEN.toLowerCase().includes(request.toLowerCase()))
-          return true;
-        else
-          return false;
-      });
-
-      setCardsWithFilter(filteredCards);
-      localStorage.setItem('cards', JSON.stringify(filteredCards));
-      localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
+    } else{
+      localStorage.setItem('request', request);
+      localStorage.setItem('shorts', shorts);
+      setFCards(filterCards());
     }
-
-    localStorage.setItem('request', request);
   }
 
   React.useEffect(() => {
@@ -75,29 +66,19 @@ function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
       .catch((error) => {
         console.log(error);
       });
-
-    const requestFromLocalStorage = localStorage.getItem('request') || '';
-    const shortsFromLocalStorage = localStorage.getItem('shorts') === 'true';
-    const cardsFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || [];
-    const cardsWithFilterFromLocalStorage = JSON.parse(localStorage.getItem('cardsWithFilter')) || [];
-
-    setRequest(requestFromLocalStorage);
-    setShorts(shortsFromLocalStorage);
-    setCards(cardsFromLocalStorage);
-    setCardsWithFilter(cardsWithFilterFromLocalStorage);
+      // console.log(filterCards());
+      // setFCards(filterCards());
   }, []);
 
   React.useEffect(() => {
-    const filteredCards = cardsWithFilter.filter((movie)=>{
-      if(!shorts && movie.duration < 40) {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    localStorage.setItem('fCards', JSON.stringify(fCards));
+    setFCards(filterCards());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cards])
+
+  React.useEffect(() => {
     localStorage.setItem('shorts', shorts);
-    setCardsWithFilter(filteredCards);
-    // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
+    setFCards(filterCards());
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shorts]);
 
@@ -117,7 +98,7 @@ function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
           <Preloader /> :
           <MoviesCardList
             isInitial={isInitial}
-            cards={cardsWithFilter}
+            cards={fCards}
             requestError={requestError}
             savedMovies={savedMovies}
           />

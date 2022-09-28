@@ -79,7 +79,7 @@ function App() {
     localStorage.removeItem('shorts');
     localStorage.removeItem('cards');
     localStorage.removeItem('request');
-    localStorage.removeItem('cardsWithFilter');
+    localStorage.removeItem('fCards');
     localStorage.removeItem('loggedIn');
     setLoggedIn(false);
     setCurrentUser({});
