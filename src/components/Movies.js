@@ -68,7 +68,7 @@ function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
       });
       // console.log(filterCards());
       // setFCards(filterCards());
-  }, []);
+  }, [fCards]);
 
   React.useEffect(() => {
     localStorage.setItem('fCards', JSON.stringify(fCards));
