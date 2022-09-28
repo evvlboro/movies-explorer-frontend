@@ -88,7 +88,7 @@ function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
   }, []);
 
   React.useEffect(() => {
-    const filteredCards = cards.filter((movie)=>{
+    const filteredCards = cardsWithFilter.filter((movie)=>{
       if(!shorts && movie.duration < 40) {
         return false;
       } else {
