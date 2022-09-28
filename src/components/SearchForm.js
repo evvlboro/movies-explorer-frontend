@@ -1,6 +1,5 @@
 import React from 'react';
 import FilterCheckbox from './FilterCheckbox';
-import moviesApi from '../utils/MoviesApi';
 
 function SearchForm({request, setRequest, onSubmit, shorts, setShorts}) {
 
@@ -19,6 +18,10 @@ function SearchForm({request, setRequest, onSubmit, shorts, setShorts}) {
     const {value} = event.target;
 
     setRequest(value);
+
+    if (String(value).length !== 0) {
+      setError('');
+    }
   }
 
   return (
