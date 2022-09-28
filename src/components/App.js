@@ -23,6 +23,8 @@ function App() {
   const [updateUserError, setUpdateUserError] = React.useState('');
   const [updateSuccess, setUpdateSuccess] = React.useState(false);
 
+  const [firstSubmit, setFirstSubmit] = React.useState(true);
+
   const navigate = useNavigate();
 
   function handleRegister({email, name, password}) {
@@ -81,6 +83,7 @@ function App() {
     localStorage.removeItem('loggedIn');
     setLoggedIn(false);
     setCurrentUser({});
+    setFirstSubmit(true);
     navigate('/');
   }
 
@@ -111,7 +114,9 @@ function App() {
         <Route path="/" element={<Main  loggedIn={loggedIn} fromMainPage={true}/>} />
         {
           loggedIn ?
-          <Route path="/movies" element={<Movies loggedIn={loggedIn}/>} />
+            <Route path="/movies" element={
+              <Movies loggedIn={loggedIn} firstSubmit={firstSubmit} setFirstSubmit={setFirstSubmit}/>
+            } />
           : <Route path="movies" element={<Navigate to="/" replace/>} />
         }
         {

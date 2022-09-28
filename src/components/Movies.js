@@ -9,7 +9,7 @@ import Preloader from './Preloader';
 import moviesApi from '../utils/MoviesApi';
 import { getSavedMovies } from '../utils/MainApi';
 
-function Movies({loggedIn}) {
+function Movies({loggedIn, firstSubmit, setFirstSubmit}) {
   const [cards, setCards] = React.useState(JSON.parse(localStorage.getItem('cards')) || []);
   const [cardsWithFilter, setCardsWithFilter] = React.useState(JSON.parse(localStorage.getItem('cardsWithFilter')) || []);
   const [loading, setLoading] = React.useState(false);
@@ -20,32 +20,49 @@ function Movies({loggedIn}) {
   const [savedMovies, setSavedMoives] = React.useState([]);
 
   const onSubmitForm = () => {
-    setIsInitial(false);
-    setLoading(true);
+    if (firstSubmit)
+    {
+      setIsInitial(false);
+      setLoading(true);
+      setFirstSubmit(false);
+      moviesApi.getInitalCardsList()
+        .then((initalCards) => {
+          const filteredCards = initalCards.filter((element) => {
+            if (!shorts && element.duration < 40)
+              return false;
+            else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
+                    || element.nameEN.toLowerCase().includes(request.toLowerCase()))
+              return true;
+            else
+              return false;
+          });
 
-    moviesApi.getInitalCardsList()
-      .then((initalCards) => {
-        const filteredCards = initalCards.filter((element) => {
-          if (!shorts && element.duration < 40)
-            return false;
-          else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
-                  || element.nameEN.toLowerCase().includes(request.toLowerCase()))
-            return true;
-          else
-            return false;
-        });
+          setCards(initalCards);
+          setCardsWithFilter(filteredCards);
+          setLoading(false);
+          localStorage.setItem('cards', JSON.stringify(initalCards));
+          localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log(error);
+          setRequestError(true);
+      });
+    } else {
+      const filteredCards = cards.filter((element) => {
+        if (!shorts && element.duration < 40)
+          return false;
+        else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
+          || element.nameEN.toLowerCase().includes(request.toLowerCase()))
+          return true;
+        else
+          return false;
+      });
 
-        setCards(filteredCards);
-        setCardsWithFilter(filteredCards);
-        setLoading(false);
-        localStorage.setItem('cards', JSON.stringify(filteredCards));
-        localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-        setRequestError(true);
-    });
+      setCardsWithFilter(filteredCards);
+      localStorage.setItem('cards', JSON.stringify(filteredCards));
+      localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
+    }
 
     localStorage.setItem('request', request);
   }
