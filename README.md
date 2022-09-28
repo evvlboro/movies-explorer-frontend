@@ -8,3 +8,5 @@
 Cсылка на проект: https://movies.explorer.evvlboro.nomoredomains.sbs
 
 IP-адрес сервера: 158.160.2.31
+
+Ссылка на pull request: https://github.com/evvlboro/movies-explorer-frontend/pull/2
