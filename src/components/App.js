@@ -16,7 +16,7 @@ import NotFound from './NotFound';
 function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem('loggedIn') === 'true');
 
   const [registerError, setRegisterError] = React.useState('');
   const [loginError, setLoginError] = React.useState('');
@@ -78,7 +78,9 @@ function App() {
     localStorage.removeItem('cards');
     localStorage.removeItem('request');
     localStorage.removeItem('cardsWithFilter');
+    localStorage.removeItem('loggedIn');
     setLoggedIn(false);
+    setCurrentUser({});
     navigate('/');
   }
 
@@ -88,12 +90,13 @@ function App() {
         .then((data) => {
           setCurrentUser(data);
           setLoggedIn(true);
+          localStorage.setItem('loggedIn', loggedIn);
         })
         .catch(() => {
-          setCurrentUser({});
-          setLoggedIn(false);
+          handleLogout();
         })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedIn]);
 
   React.useEffect(() => {
@@ -128,8 +131,16 @@ function App() {
             } />
           : <Route path="/profile" element={<Navigate to="/" replace/>} />
         }
-        <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />
-        <Route path="/signin" element={<Login onLogin={handleLogin} loginError={loginError}/>} />
+        {
+          !loggedIn ?
+          <Route path="/signup" element={<Register onRegister={handleRegister} registerError={registerError}/>} />
+          : <Route path="/signup" element={<Navigate to="/" replace/>} />
+        }
+        {
+          !loggedIn ?
+          <Route path="/signin" element={<Login onLogin={handleLogin} loginError={loginError}/>} />
+            : <Route path="/signin" element={<Navigate to="/" replace/>} />
+        }
         <Route path="*" element={<NotFound navigate={navigate}/>} />
       </Routes>
     </CurrentUserContext.Provider>
