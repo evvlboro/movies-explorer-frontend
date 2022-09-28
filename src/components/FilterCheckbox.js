@@ -1,9 +1,8 @@
 import React from "react";
 
 function FilterCheckbox({shorts, setShorts}) {
-  const handleChange = (event) => {
-    setShorts(event.target.checked);
-    localStorage.setItem('shorts', event.target.checked);
+  const handleChange = () => {
+    setShorts(!shorts);
   }
 
   return (
@@ -13,7 +12,7 @@ function FilterCheckbox({shorts, setShorts}) {
           className="checkbox"
           type="checkbox"
           id="checkbox"
-          defaultChecked={shorts}
+          checked={shorts}
           onChange={handleChange}
         />
         <span></span>

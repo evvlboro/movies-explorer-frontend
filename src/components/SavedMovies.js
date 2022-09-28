@@ -73,7 +73,6 @@ function SavedMovies({ loggedIn }) {
     });
 
     setSavedFilteredMovies(filteredCards);
-    // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards))
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shorts]);
 

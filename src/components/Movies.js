@@ -10,8 +10,8 @@ import moviesApi from '../utils/MoviesApi';
 import { getSavedMovies } from '../utils/MainApi';
 
 function Movies({loggedIn}) {
-  const [cards, setCards] = React.useState([]);
-  const [cardsWithFilter, setCardsWithFilter] = React.useState([]);
+  const [cards, setCards] = React.useState(JSON.parse(localStorage.getItem('cards')) || []);
+  const [cardsWithFilter, setCardsWithFilter] = React.useState(JSON.parse(localStorage.getItem('cardsWithFilter')) || []);
   const [loading, setLoading] = React.useState(false);
   const [request, setRequest] = React.useState('');
   const [shorts, setShorts] = React.useState(localStorage.getItem('shorts') === 'true');
@@ -39,7 +39,7 @@ function Movies({loggedIn}) {
         setCardsWithFilter(filteredCards);
         setLoading(false);
         localStorage.setItem('cards', JSON.stringify(filteredCards));
-        // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
+        localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
       })
       .catch((error) => {
         setLoading(false);
@@ -60,12 +60,14 @@ function Movies({loggedIn}) {
       });
 
     const requestFromLocalStorage = localStorage.getItem('request') || '';
+    const shortsFromLocalStorage = localStorage.getItem('shorts') === 'true';
     const cardsFromLocalStorage = JSON.parse(localStorage.getItem('cards')) || [];
-    // const cardsWithFilterFromLocalStorage = JSON.parse(localStorage.getItem('cardsWithFilter')) || [];
+    const cardsWithFilterFromLocalStorage = JSON.parse(localStorage.getItem('cardsWithFilter')) || [];
 
     setRequest(requestFromLocalStorage);
+    setShorts(shortsFromLocalStorage);
     setCards(cardsFromLocalStorage);
-    // setCardsWithFilter(cardsWithFilterFromLocalStorage);
+    setCardsWithFilter(cardsWithFilterFromLocalStorage);
   }, []);
 
   React.useEffect(() => {
@@ -76,9 +78,9 @@ function Movies({loggedIn}) {
         return true;
       }
     });
-
+    localStorage.setItem('shorts', shorts);
     setCardsWithFilter(filteredCards);
-    // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards))
+    // localStorage.setItem('cardsWithFilter', JSON.stringify(filteredCards));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shorts]);
 
