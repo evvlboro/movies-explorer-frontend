@@ -6,11 +6,12 @@ import Portfolio from './Portfolio';
 import Footer from './Footer';
 import Header from './Header';
 
-function Main() {
+function Main({loggedIn, fromMainPage}) {
     return (
       <>
         <Header
-          loggedIn={false}
+          loggedIn={loggedIn}
+          fromMainPage={fromMainPage}
         />
         <main>
           <Promo loggedIn={false} />

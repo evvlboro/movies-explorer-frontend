@@ -1,79 +1,105 @@
+import React from 'react';
+
 import Header from './Header';
 import SearchForm from './SearchForm';
 import Footer from './Footer';
 import MoviesCardList from './MoviesCardList';
+import Preloader from './Preloader';
 
-import cardExample1 from '../images/card-examples/example1.png';
+import { getSavedMovies } from '../utils/MainApi';
 
-const cards = [
-  {
-    _id: 1,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1,
-    isSaved: true
-  },
-  {
-    _id: 2,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1,
-    isSaved: true
-  },
-  {
-    _id: 3,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1,
-    isSaved: true
-  },
-  {
-    _id: 4,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 5,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 6,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 7,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 8,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
-  },
-  {
-    _id: 9,
-    title: '33 слова о дизайне',
-    duration: '1ч 47м',
-    imgUrl: cardExample1
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
+
+function SavedMovies({ loggedIn }) {
+  const [savedMovies, setSavedMoives] = React.useState([]);
+  const [savedFilteredMovies, setSavedFilteredMovies] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+  const [isInitial, setIsInitial] = React.useState(true);
+  const [request, setRequest] = React.useState('');
+  const [shorts, setShorts] = React.useState(true);
+  const [cardsUpdate, setCardsUpdate] = React.useState(0);
+
+  const currentUser = React.useContext(CurrentUserContext);
+
+  React.useEffect(() => {
+    setLoading(true);
+    getSavedMovies(localStorage.getItem('jwt'))
+      .then((data) => {
+        setLoading(false);
+
+        const userData = data.filter((movie) => {
+          return movie.owner === currentUser._id;
+        });
+
+        setSavedMoives(userData);
+        setSavedFilteredMovies(userData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [cardsUpdate, currentUser._id]);
+
+  const onSubmitForm = () => {
+    setIsInitial(false);
+
+    const filteredCards = savedMovies.filter((element) => {
+      if (!shorts && element.duration < 40)
+        return false;
+      else if (element.owner !== currentUser._id) {
+        return false;
+      }
+      else if (element.nameRU.toLowerCase().includes(request.toLowerCase())
+        || element.nameEN.toLowerCase().includes(request.toLowerCase()))
+        return true;
+      else
+        return false;
+    });
+
+    setSavedFilteredMovies(filteredCards);
   }
-]
 
-function SavedMovies() {
+  React.useEffect(() => {
+    const filteredCards = savedMovies.filter((movie) => {
+      if (!shorts && movie.duration < 40)
+        return false;
+      else if (movie.owner !== currentUser._id) {
+        return false;
+      }
+      else if (movie.nameRU.toLowerCase().includes(request.toLowerCase())
+        || movie.nameEN.toLowerCase().includes(request.toLowerCase()))
+        return true;
+      else
+        return false;
+    });
+
+    setSavedFilteredMovies(filteredCards);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shorts]);
+
   return (
     <>
-      <Header loggedIn={true}/>
+      <Header loggedIn={loggedIn}/>
       <main>
-        <SearchForm />
-        <MoviesCardList
-          cards={cards.filter(card => card.isSaved === true)}
-          fromSavedPage={true} />
+        <SearchForm
+          request={request}
+          setRequest={setRequest}
+          onSubmit={onSubmitForm}
+          shorts={shorts}
+          setShorts={setShorts}
+        />
+        {
+          loading ?
+            <Preloader /> :
+            <MoviesCardList
+              isInitial={isInitial}
+              cards={savedFilteredMovies}
+              fromSavedPage={true}
+              savedMovies={savedMovies}
+              cardsUpdate={cardsUpdate}
+              setCardsUpdate={setCardsUpdate}
+              // requestError={requestError}
+            />
+        }
       </main>
       <Footer />
     </>

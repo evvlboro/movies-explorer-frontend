@@ -15,14 +15,17 @@
   width: 400px;
   height: 45px;
 
-  margin-top: 135px;
-
   border: none;
   cursor: pointer;
 }
 
 .auth__submit-btn:hover {
   opacity: .6;
+}
+
+.auth__submit-btn:disabled {
+  background: gray;
+  cursor: not-allowed;
 }
 
 @media (max-width: 520px) {

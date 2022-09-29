@@ -1,13 +1,55 @@
+import React from 'react';
 import FilterCheckbox from './FilterCheckbox';
 
-function SearchForm() {
+function SearchForm({request, setRequest, onSubmit, shorts, setShorts}) {
+
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(request === '' ) {
+      setError('Нужно ввести ключевое слово');
+    } else {
+      onSubmit();
+    }
+  }
+
+  const handleRequestChange = (event) => {
+    const {value} = event.target;
+
+    setRequest(value);
+
+    if (String(value).length !== 0) {
+      setError('');
+    }
+  }
+
   return (
-    <form className="search-form__container">
-      <div className="search-form">
-        <input className="search-form__input" placeholder='Фильм' required />
-        <button className="search-form__btn" type="submit"/>
+    <form
+      className="search-form__container"
+      onSubmit={handleSubmit}
+    >
+      <div className={`search-form ${error && 'search-form_error'}`}>
+        <input
+          className="search-form__input"
+          placeholder='Фильм'
+          name="request"
+          value={request || ""}
+          onChange={handleRequestChange}
+        />
+        <button
+          className="search-form__btn"
+          type="submit"
+        />
       </div>
-      <FilterCheckbox />
+      {
+        error &&
+        <span className='search-form__error'>{error}</span>
+      }
+      <FilterCheckbox
+        shorts={shorts}
+        setShorts={setShorts}
+      />
     </form>
   )
 }
